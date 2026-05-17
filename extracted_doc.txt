@@ -1,0 +1,1435 @@
+﻿PRE-PROYECTO
+AUTOR:
+Jorge Alquezar Martínez
+CFGS DESARROLLO APLICACIONES WEB
+CENTRO SAN VALERO
+ZARAGOZA
+ÍNDICE
+GLOSARIO
+4
+1. ABSTRACT
+8
+2. DESCRIPCIÓN DEL PROYECTO
+9
+2.1. ANÁLISIS GENERAL DEL PROYECTO
+9
+2.1.1. ABORDAR UNA NECESIDAD UNIVERSAL
+9
+2.1.2. A QUIENES NOS DIRIGIMOS
+9
+2.1.3. ¿QUÉ SERÍA DE ZARAGOZA SIN NOSOTROS?
+10
+2.1.4. ¿QUÉ VENTAJAS OFRECEMOS?
+11
+2.1.5. SERVICIOS COMPLEMENTARIOS
+11
+2.1.6. IMAGEN CORPORATIVA
+12
+2.2. CARACTERÍSTICAS TÉCNICAS
+12
+2.2.1. TECNOLOGÍAS EMPLEADAS
+12
+2.2.2. PROTOTIPO NAVEGACIONAL
+13
+2.2.3. BASE DE DATOS
+16
+2.2.4. ANÁLISIS DE CASOS DE USO
+17
+3. ESTUDIO DE MERCADO
+18
+3.1. ESTUDIO DEL SECTOR
+18
+3.1.1. EVOLUCIÓN Y TENDENCIAS
+18
+3.1.2. ANTE LOS PRODUCTOS SUSTITUTIVOS
+18
+3.1.3. PRESCRIPTORES
+19
+3.2. ANÁLISIS DE LA COMPETENCIA
+20
+3.3. ESTUDIO DE MERCADO
+23
+3.3.1 CLIENTES POTENCIALES
+23
+3.3.2 ESTUDIO DEL CONSUMIDOR
+24
+3.4. ANÁLISIS INTERNO
+27
+3.4.1 Gabriel Milagro López
+27
+3.4.2 Carlos Fernández Guevara
+28
+3.4.3 Jorge Alquézar
+28
+3.5. ANÁLISIS DAFO
+29
+3.5.1. DEBILIDADES
+30
+3.5.2. AMENAZAS
+30
+3.5.3. FORTALEZAS
+31
+3.5.4. OPORTUNIDADES
+31
+4. REQUISITOS DEL SISTEMA
+32
+4.1. REQUISITOS FUNCIONALES
+32
+4.2. REQUISITOS NO FUNCIONALES
+39
+5. PROTOTIPADO DE PANTALLAS
+44
+6. BASE DE DATOS DEL SISTEMA
+48
+6.1. ENTIDADES
+48
+6.2. RELACIONES
+49
+7. ARQUITECTURA
+50
+8. PLAN DE MARKETING
+51
+8.1. OBJETIVOS A CORTO, MEDIO Y LARGO PLAZO
+51
+8.1.1. GENERALES
+51
+8.1.2. ESPECÍFICOS
+51
+8.2. COMUNICACIÓN
+52
+8.3. DISTRIBUCIÓN
+53
+8.4. PRECIO
+53
+9. PRESUPUESTO
+55
+9.1. MANO DE OBRA
+55
+9.2. EQUIPOS
+56
+9.3. GASTOS GENERALES
+57
+9.4. RESUMEN Y PRESUPUESTO TOTAL
+57
+9.5. PRESUPUESTO DEL PRODUCTO FINAL
+57
+10. CONCLUSIONES
+59
+11. WEBGRAFÍA
+60
+GLOSARIO
+A
+PI
+:
+ 
+Interfaz de Programación de Aplicaciones, es un conjunto de definiciones y protocolos que permite a diferentes programas y aplicaciones comunicarse entre sí.
+Aplicación móvil:
+ 
+un software diseñado para ejecutarse en dispositivos móviles como smartphones y tablets, proporcionando funciones y servicios específicos a través de una interfaz de usuario interactiva.
+Backend:
+ parte de una aplicación o sistema que se encarga de la lógica de negocio, el procesamiento de datos y la gestión de bases de datos, funcionando en el servidor y no siendo visible para el usuario final.
+Barra de navegación:
+ elemento de la interfaz de usuario en aplicaciones y sitios web que permite a los usuarios acceder fácilmente a diferentes secciones o funciones a través de enlaces o menús organizados.
+Base de datos:
+ sistema organizado para almacenar, gestionar y recuperar datos de manera eficiente, permitiendo su acceso, manipulación y actualización de forma estructurada.
+Clave foránea:
+ campo en una tabla que se utiliza para establecer un vínculo entre dos tablas, apuntando a la clave primaria de otra tabla. Asegura la integridad referencial en la base de datos, manteniendo consistentes las relaciones entre las tablas.
+Clave primaria:
+ en una base de datos es un campo único y no nulo que identifica de manera exclusiva cada registro en una tabla, facilitando la organización y recuperación eficiente de los datos.
+CMS:
+ Sistema de Gestión de Contenidos, una plataforma de software que permite crear, gestionar y modificar contenido digital en un sitio web de manera sencilla, sin necesidad de conocimientos avanzados de programación.
+Escalabilidad:
+ capacidad de un sistema para manejar un aumento en la carga de trabajo o expandirse en tamaño de manera eficiente. Esto implica que el rendimiento del sistema mejora o se mantiene constante a medida que se agregan más recursos o se incrementa la demanda.
+Esquema entidad-relación:
+ representación visual de los datos y sus interrelaciones dentro de un sistema de base de datos, utilizando diagramas que muestran entidades (objetos o conceptos) y las relaciones entre ellas.
+FastAPI
+:
+ framework de desarrollo web para construir APIs (Interfaz de Programación de Aplicaciones) en Python de manera rápida, fácil y con alto rendimiento. Se destaca por su sintaxis intuitiva, tipado estático opcional y su capacidad para generar documentación automática basada en estándares OpenAPI y Swagger.
+Framework:
+ una estructura de software predefinida que proporciona un conjunto de herramientas, bibliotecas y directrices para facilitar el desarrollo y la integración de aplicaciones de manera más eficiente y estandarizada.
+Frontend:
+ parte de una aplicación o sitio web que interactúa directamente con los usuarios. Incluye todo lo que los usuarios ven, interactúan y experimentan en su navegador web, como la interfaz de usuario, el diseño, la disposición de los elementos, las animaciones y cualquier otro contenido visible o interactivo.
+ID:
+ campo comúnmente utilizado en las bases de datos para referirse a la clave primaria. Es un valor único asignado a cada registro en una tabla, que permite identificar y diferenciar de manera exclusiva cada entrada dentro de esa tabla.
+JavaScript:
+ lenguaje de programación ampliamente utilizado tanto en el frontend como en el backend de las aplicaciones web. En el contexto del frontend, JavaScript se utiliza para agregar interactividad y dinamismo a las páginas web, permitiendo a los desarrolladores crear efectos visuales, manipular el contenido de la página en respuesta a las acciones del usuario y comunicarse con servidores web para obtener o enviar datos sin tener que recargar la página.
+Lenguaje de programación:
+ conjunto de reglas y sintaxis que permite a los desarrolladores escribir instrucciones que una computadora puede entender y ejecutar para realizar tareas específicas.
+Librería:
+ conjunto de funciones, métodos y rutinas predefinidas que proporcionan funcionalidades específicas para ser utilizadas por programas o aplicaciones. Las librerías permiten a los desarrolladores ahorrar tiempo y esfuerzo al reutilizar código ya escrito y probado, en lugar de tener que escribirlo desde cero.
+MySQL:
+ sistema de gestión de bases de datos relacional de código abierto ampliamente utilizado. Es conocido por su confiabilidad, rendimiento y facilidad de uso, y es compatible con una amplia gama de plataformas y lenguajes de programación. MySQL es una opción popular para aplicaciones web y se utiliza en una variedad de entornos, desde pequeños sitios web hasta grandes sistemas empresariales.
+Plugin:
+ componente de software que se puede agregar a una aplicación o sistema para extender su funcionalidad o modificar su comportamiento. Los plugins generalmente se diseñan para integrarse fácilmente con el software principal y pueden proporcionar características adicionales, como nuevas herramientas, efectos, funcionalidades específicas o soporte para formatos de archivo adicionales. Los usuarios pueden instalar, desinstalar o activar plugins según sus necesidades, lo que permite una mayor personalización y flexibilidad en el uso del software.
+React:
+ biblioteca de JavaScript de código abierto utilizada para construir interfaces de usuario interactivas y dinámicas para aplicaciones web y móviles. Desarrollada por Facebook, React se centra en la creación de componentes reutilizables que representan partes específicas de la interfaz de usuario y que pueden actualizarse de manera eficiente cuando cambia el estado de la aplicación. Utiliza un enfoque basado en componentes y el concepto de un DOM virtual para optimizar el rendimiento y facilitar el desarrollo de aplicaciones de una sola página (SPA) y aplicaciones de interfaz de usuario complejas.
+React Native:
+ 
+marco
+ de desarrollo móvil que permite a los desarrolladores crear aplicaciones nativas para iOS y Android utilizando JavaScript y React. Con React Native, pueden compartir una gran parte del código entre plataformas, lo que acelera el desarrollo y reduce los costos. La plataforma aprovecha la potencia de React para construir interfaces de usuario intuitivas y utiliza componentes nativos del sistema operativo para lograr un rendimiento óptimo y una apariencia nativa.
+Relación 1:M:
+ un registro en una tabla puede estar relacionado con múltiples registros en otra tabla, pero cada uno de estos registros múltiples está vinculado solo a un único registro en la primera tabla.
+Relación N:M:
+ múltiples registros en una tabla pueden estar relacionados con múltiples registros en otra tabla. Esto suele implementarse mediante una tabla intermedia que contiene claves foráneas de ambas tablas para establecer las relaciones.
+Sistema gestor de bases de datos:
+ software diseñado para gestionar, almacenar, organizar y recuperar datos de manera eficiente en una base de datos. Estos sistemas ofrecen funcionalidades como la creación y modificación de bases de datos, el manejo de transacciones, la administración de usuarios y permisos, así como la optimización del rendimiento de consultas y almacenamiento de datos. Ejemplos comunes de SGBD incluyen MySQL, PostgreSQL, Oracle, SQL Server y MongoDB.
+Web:
+ sistema de información global accesible a través de Internet, que utiliza protocolos como HTTP y HTTPS para permitir la visualización y navegación de contenido multimedia mediante navegadores web.
+Wordpress:
+ un CMS de código abierto ampliamente utilizado para la creación y gestión de sitios web y blogs. Se destaca por su facilidad de uso, flexibilidad y extensibilidad a través de una amplia variedad de temas y complementos (plugins). Con WordPress, los usuarios pueden crear y personalizar fácilmente sitios web sin necesidad de conocimientos de programación, gracias a su interfaz intuitiva y a su editor de contenido visual. Es una opción popular tanto para pequeños blogs como para grandes sitios web corporativos, y su comunidad activa ofrece soporte y recursos adicionales para los usuarios.
+1. ABSTRACT
+ESP
+Imagina una aplicación web que te conecta instantáneamente con eventos emocionantes y personas con tus mismos gustos y aficiones en Zaragoza. Eso es exactamente lo que ofrecemos. Con MyEventZ podrás explorar una amplia gama de actividades, desde eventos culturales hasta reuniones sociales.
+¿Quieres organizar tu propio encuentro? ¡Hazlo en cuestión de segundos! ¿Prefieres unirte a eventos ya publicados? ¡También podrás hacerlo! Nuestra aplicación cuenta con una interfaz intuitiva y amigable, fácil de usar para cualquier tipo de usuario, con características diseñadas específicamente para garantizar que todos se sientan bienvenidos. Además, estamos comprometidos con la inclusión y el apoyo a los negocios locales.
+En un mundo cada vez más digital, MyEventZ es una invitación para una vida social activa y saludable. Con nuestra aplicación descubrirás una forma más emocionante de ocio, formar nuevas amistades y apoyar la vida social en nuestra querida Zaragoza.
+ENG
+Imagine a web application that instantly connects you with exciting events and people with similar interests in Zaragoza. That's exactly what we offer. With MyEventZ, you can explore a wide variety of activities, from cultural events to social meetings.
+Would you like to organize your own activities? Do it in a matter of seconds! Prefer to join already published events? You can do that too! Our app features an intuitive and user-friendly interface, easy for any kind of user to navigate, with features specifically designed to ensure everyone feels welcome. Additionally, we are committed to supporting local businesses.
+In an increasingly digital world, MyEventZ is an invitation to an active and healthy social life. With our app, you'll discover a more exciting way to spend your free time, form new friendships, and support the social scene in our beloved Zaragoza.
+2. DESCRIPCIÓN DEL PROYECTO
+2.1. ANÁLISIS GENERAL DEL PROYECTO
+Estamos desarrollando una aplicación web que revolucionará la forma en que las personas organizan actividades en Zaragoza. Con esta herramienta, podrás crear tus propios eventos o unirte a los de otros en la zona. Nuestra aplicación surge de la creciente necesidad de socializar y conectar con personas afines, una necesidad que ha sido aún más evidente desde la pandemia del COVID-19 en 2020.
+Si bien existen otras aplicaciones similares, creemos que nuestra propuesta ofrece elementos clave que marcarán la diferencia. Nuestro objetivo es facilitar la socialización en la ciudad y ayudar a combatir la soledad, conectando a personas con intereses comunes y proporcionando experiencias significativas.
+2.1.1. ABORDAR UNA NECESIDAD UNIVERSAL
+Todos hemos experimentado momentos de soledad o hemos sentido el deseo de ampliar nuestro círculo social. Con nuestro proyecto, abrimos oportunidades para facilitar la socialización y explorar nuevas experiencias. Ofrecemos una plataforma directa para conectar con personas que comparten tus mismos intereses y aficiones, lo cual consideramos fundamental para agilizar el proceso de establecer nuevas amistades.
+Además, cubriremos la falta de información sobre diferentes actividades y eventos, la soledad y la dificultad para encontrar compañía con intereses similares son algunos de los principales problemas a los que nos enfrentamos la mayoría de la población, problemas que MyEventZ está dispuesto a solucionar.
+2.1.2. A QUIENES NOS DIRIGIMOS
+En nuestra aplicación, si bien está abierta a todo tipo de usuarios, nos enfocamos especialmente en 
+dos grupos clave
+: aquellos que se trasladan a Zaragoza por motivos de estudio o trabajo y se encuentran en una situación donde no conocen a nadie en la ciudad, y aquellos que enfrentan dificultades para socializar o encontrar personas con intereses similares.
+Para los 
+recién llegados a la ciudad
+, nuestra plataforma les ofrece una oportunidad invaluable para conectarse con otros residentes, descubrir eventos locales y sumergirse en la vida social de Zaragoza desde el primer día. Creemos que esto no solo facilita su adaptación a un nuevo entorno, sino que también brinda un sentido de comunidad.
+Por otro lado, para aquellos que encuentran 
+difícil socializar
+ o encontrar 
+personas con intereses afines
+, nuestra aplicación actúa como un puente que les permite descubrir a otros con quienes compartir sus pasiones y hobbies. Ya sea que se trate de aficionados al arte, amantes de la música, deportistas o cualquier otra cosa, nuestra plataforma les ofrece una vía directa para conectarse con personas que comparten sus mismas afinidades, fomentando así nuevas amistades y relaciones significativas.
+2.1.3. ¿QUÉ SERÍA DE ZARAGOZA SIN NOSOTROS?
+Sin duda, Zaragoza es una ciudad llena de vida, pero nuestra aplicación puede enriquecer aún más la experiencia social de quienes la habitan. Algunas de las razones por las que Zaragoza sin nuestra aplicación podría perder ciertos aspectos de su vida social son:
+Dificultad para conocer gente nueva:
+ Sin una plataforma que facilite la conexión entre personas con intereses similares, aquellos que llegan a Zaragoza por primera vez, podrían tener dificultades para integrarse y establecer nuevas amistades.
+Limitaciones en la diversidad de actividades:
+ Nuestra aplicación amplía el acceso a una variedad de eventos y actividades en Zaragoza, lo que permite a los residentes explorar nuevas experiencias y descubrir oportunidades que de otra manera podrían pasar desapercibidas.
+Mayor riesgo de aislamiento social:
+ Para aquellos que enfrentan dificultades para socializar o encontrar personas con gustos similares, la falta de una plataforma como la nuestra podría aumentar el riesgo de aislamiento social y la sensación de soledad en la ciudad.
+Menor sentido de comunidad:
+ La posibilidad de conectar con otros residentes a través de nuestra aplicación fortalece el sentido de comunidad en Zaragoza, fomentando la colaboración, el apoyo mutuo y el intercambio cultural entre sus habitantes.
+2.1.4. ¿QUÉ VENTAJAS OFRECEMOS?
+Nuestra aplicación busca diferenciarse del resto de aplicaciones similares que se encuentran en el mercado mediante de los siguientes factores:
+Aportamos un 
+enfoque local
+, centrándonos específicamente en la ciudad de Zaragoza y alrededores, por lo que aspiramos a un público mucho más específico y fácil de atraer.
+Ofrecemos un 
+extenso listado de categorías
+ con las que etiquetar los eventos, de forma que no se quede atrás ningún tipo de actividad que quieran organizar los usuarios de la aplicación.
+Hacemos un fuerte énfasis en la creación de amistades y círculos sociales, tratando de 
+facilitar la conexión entre usuarios
+.
+2.1.5. SERVICIOS COMPLEMENTARIOS
+Es importante destacar que desde MyEventZ ofreceremos una serie de servicios complementarios para que nuestros usuarios puedan disfrutar de una mejor experiencia a la hora de hacer uso de nuestra aplicación. Es por esto que tendrán acceso a las siguientes características:
+Asesoramiento personalizado:
+ todos los usuarios tendrán acceso a diferentes opciones de contacto con el equipo de MyEventZ para solicitar cualquier tipo de ayuda acerca del uso de la aplicación para que puedan aprovechar al máximo todas sus características.
+Moderación de eventos y usuarios:
+ el equipo también se encargará de mantener una moderación constante de los eventos y usuarios para evitar que se haga cualquier  uso fraudulento de la misma. Por ejemplo, eventos que puedan parecer sospechosos, usuarios causantes de inconvenientes en los eventos a los que hayan asistido entre otras situaciones que se puedan presentar.
+Gestión de eventos oficiales:
+ mantendremos un especial trato y comunicación con cualquier empresa o entidad que desee publicitar y gestionar eventos oficiales a través de nuestra aplicación.
+2.1.6. IMAGEN CORPORATIVA
+Tras experimentar y variar con diferentes tonalidades, diseños, tipos de logo, enfoques y formas de expresar el propósito de la aplicación de forma eficiente, obtuvimos una paleta de colores llamativa para el usuario, además de un nombre y diseño que describen de forma muy eficaz la la funcionalidad principal de la aplicación.
+Optamos por mantener los dos logos presentados (entre todas las variaciones que diseñamos), los cuales nos servirán tanto como logotipo de la marca y aplicación, como icono en la interfaz móvil. 
+En cuanto a la elección de colores, tomamos el azul, que es un color asociado a la juventud, la energía y la creatividad, junto al morado que, por su parte, está más relacionado con la innovación y la imaginación. Estos colores, combinados, transmiten una imagen de dinamismo, frescura y exclusividad.
+2.2. CARACTERÍSTICAS TÉCNICAS
+2.2.1. TECNOLOGÍAS EMPLEADAS
+Tras meditar detenidamente en conjunto acerca de cuáles serían las tecnologías que nos permitirían desarrollar una 
+aplicación web
+ de forma eficiente, a la vez que versátil y escalable, hemos elegido los siguientes 
+lenguajes de programación 
+y 
+frameworks
+.
+Para el 
+backend 
+hemos decidido hacer uso de Python, un lenguaje de programación muy sencillo e increíblemente versátil, el cual cuenta con una gran cantidad de 
+potentes 
+librerías
+. Una de ellas es 
+FastAPI
+, que permite crear 
+APIs 
+rápidas y eficientes, la cual hemos implementado en nuestro sistema.
+En el caso del 
+frontend
+, ha sido desarrollado mediante React Native, un 
+framework 
+creado por Facebook que permite desarrollar aplicaciones móviles usando 
+JavaScript
+ y 
+React
+. Permite un desarrollo acelerado y de bajo coste con una gran comunidad de soporte, siendo una herramienta eficiente y poderosa para crear aplicaciones móviles multiplataforma.
+La 
+base de datos
+ estará alojada en un servidor 
+MySQL
+, un 
+sistema de gestión de bases de datos
+ relacional ampliamente utilizado para almacenar, organizar y acceder a grandes cantidades de información de manera eficiente. Es conocido por su buen desempeño, fiabilidad y facilidad de uso.
+La web que servirá como elemento publicitario y presentador de la aplicación ha sido desarrollada en 
+WordPress
+,
+ un 
+CMS 
+de código abierto que permite crear y gestionar sitios web de manera fácil y flexible. Ofrece miles de plantillas y 
+plugins 
+que permiten personalizar y añadir funcionalidades nuevas.
+2.2.2. PROTOTIPO NAVEGACIONAL
+En 
+próximos
+ apartados
+ del documento veremos un manual sobre la interfaz de la aplicación, pero primero, vamos a echar un pequeño vistazo general a las diferentes secciones de la aplicación.
+PANTALLA DE BIENVENIDA E INICIO DE SESIÓN
+REGISTRO DE UNA NUEVA CUENTA
+BÚSQUEDA Y FILTRADO DE EVENTOS
+BÚSQUEDA DE USUARIOS Y PERFIL PERSONAL
+EDICIÓN DE PERFIL Y PUBLICACIÓN DE UN NUEVO EVENTO
+2.2.3. BASE DE DATOS
+Debido a la naturaleza de la aplicación y tras analizar detenidamente las características y funcionalidad de nuestra aplicación, hemos diseñado el siguiente 
+esquema entidad-relación
+ con el que cubriremos el almacenamiento de todos los datos acerca de usuarios, eventos y categorías, además de las relación entre todos ellos.
+Más adelante
+, veremos en mayor profundidad el porqué de cada una de las entidades, sus relaciones, los campos que contienen y cómo interactúa la aplicación a través del backend a la hora de consumir los datos almacenados.
+2.2.4. ANÁLISIS DE CASOS DE USO
+Tener en cuenta todos los casos de uso de los que requerirá la aplicación es muy importante de cara al desarrollo de la misma, para tener una idea sólida de su funcionalidad completa y todas las opciones que dará al usuario al hacer uso de ella.
+Es por esto que, tras sesiones de lluvias de ideas y largas reflexiones sobre el enfoque y características que deseamos que tenga la aplicación, hemos obtenido el siguiente listado de casos de uso con los que contará en su primera versión:
+Registro de una nueva cuenta.
+Inicio de sesión mediante credenciales de acceso.
+Mostrar eventos más populares (con mayor cantidad de participantes).
+Mostrar eventos más próximos.
+Buscar y seleccionar categorías con las que filtrar eventos.
+Mostrar eventos filtrados por categorías.
+Visualizar información sobre un evento.
+Participar/desapuntarse de un evento.
+Búsqueda de usuarios.
+Acceder al perfil de un usuario (datos, eventos publicados y asistidos).
+Editar información del perfil de usuario.
+Cerrar sesión.
+Publicar un evento.
+Editar/eliminar un evento.
+Esta primera versión, como es obvio, estará sujeta a modificaciones y expansiones a lo largo de su desarrollo.
+Al igual que en el caso de la base de datos, explicaremos con mayor detenimiento en 
+apartados posteriores
+ 
+todas las especificaciones sobre casos de uso, requisitos funcionales y requisitos no funcionales.
+3. ESTUDIO DE MERCADO
+En este apartado expondremos y compararemos los datos recogidos acerca del sector en el que nos enfocamos, haremos un análisis de nuestra principal competencia como aplicación  y mostraremos los resultados del estudio que hemos realizado sobre los clientes.
+3.1. ESTUDIO DEL SECTOR
+3.1.1. EVOLUCIÓN Y TENDENCIAS
+A causa de la pandemia del COVID-19 hubo una gran disminución de los eventos presenciales durante 2020 y 2021, lo que causó un crecimiento de los eventos online, conforme se ha ido regresando a la normalidad, realizando por tanto más eventos presenciales, se ha visto un incremento de la búsqueda de eventos híbridos y de experiencias más personalizadas.
+3.1.2. ANTE LOS PRODUCTOS SUSTITUTIVOS
+Dado que hay cierta competencia dentro de nuestro sector debemos tener en cuenta algunas estrategias para actuar en caso de que otra aplicación destaque sobre la nuestra. Para enfrentarnos a esto hemos pensado en los siguientes puntos:
+Enfoque local:
+ Como mencionamos previamente al ser una aplicación centrada principalmente en Zaragoza podemos ser capaces de centrarnos más específica y fácilmente en 
+nuestro público.
+Variedad de los eventos:
+ Mientras que otras aplicaciones pueden enfocarse en un tipo de evento especializado como podría ser 
+Nixel 
+con las fiestas en discotecas, nosotros abordaremos un 
+terreno mucho más amplio
+.
+Foco en nuestra audiencia:
+ Algo que hemos visto que falla en otras aplicaciones similares es que crean la aplicación, la lanzan al público y no la mantienen periódicamente ni atienden debidamente a sus clientes. Esto es algo en lo que nos vamos a centrar en evitar, dado que creemos que solo así podremos crear una comunidad sólida y estable, que se mantenga fiel a nuestro producto.
+En conclusión pretendemos que nuestro principal escudo frente a los productos sustitutivos sea la
+ cercanía con el usuario/cliente
+, combinado con el
+ buen trato y atención
+.
+3.1.3. PRESCRIPTORES
+Dado que los prescriptores se encargan de influir sobre un público en base a sus 
+recomendaciones
+, decidimos buscar algunos que estuvieran relacionados con dos cosas principales para que realmente llegasen a nuestro público objetivo. Que fueran de Zaragoza y cuya audiencia fuera principalmente jóvenes en los rangos de edad que buscamos, pero que también pudieran abarcar a otros rangos de edad. 
+Teniendo esto en cuenta contactamos con los siguientes influencers en redes sociales:
+@soydezaragoza:
+ es una cuenta con presencia en varias redes sociales que se dedica a subir 
+noticias acerca de eventos
+ que suceden o se organizan en Zaragoza y sus proximidades. Teniendo un público de todo tipo de edades y perfiles, pero que coinciden con el rango de edad de nuestro público principal.
+@zinderizar:
+ cuenta multiplataforma también enfocada en que personas de un rango de edad entre 18 y 30 años se 
+conozcan
+, ya sea organizando 
+fiestas
+, eventos o simplemente haciendo de intermediario para que la gente socialice y viva experiencias únicas y originales.
+3.2. ANÁLISIS DE LA COMPETENCIA
+Está claro que, para lograr ofrecer un producto 
+innovador y atrayente
+, no solo debemos contar con una
+ idea creativa y original
+, sino que será de vital importancia tener en cuenta la posible competencia que amenace la viabilidad de nuestro proyecto.
+Es por esto que a continuación mostraremos información y detalles acerca de algunas de las principales aplicaciones que se encuentran en el mercado, y por tanto, podrían hacer 
+peligrar la integridad
+ de nuestra idea.
+Meetup:
+ una plataforma social en línea que conecta a personas con intereses similares para que puedan organizar y participar en eventos locales. Los usuarios pueden unirse a grupos según sus intereses, además de organizar eventos de todo tipo.
+Eventbrite:
+ se centra en la organización y gestión de eventos, tanto presenciales como virtuales. Proporciona una plataforma donde los organizadores pueden crear, promocionar y vender entradas. Los usuarios pueden explorar en su área o en línea, desde conferencias y conciertos hasta ferias y reuniones sociales.
+Fever:
+ ofrece una variedad de eventos y experiencias culturales, de entretenimiento y gastronomía en varias ciudades del mundo. Permite a los usuarios explorar y reservar entradas para espectáculos teatrales, conciertos, exposiciones y más. Enfocada en la recomendación personalizada de eventos y la venta de entradas.
+Click and plan:
+ una aplicación para reservar planes de ocio y experiencias en diferentes ciudades de España. Ofrece una amplia variedad de opciones en diferentes categorías, como deportes, gastronomía y cultura. Los usuarios pueden buscar planes, reservar su plaza y publicar sus propios eventos.
+A continuación dispondremos de una tabla en la que recogeremos los detalles más relevantes acerca de cada una de las aplicaciones mencionadas con la que podremos obtener una mejor visión en cuanto a factores a tener en cuenta con respecto a nuestra aplicación.
+Meetup
+Eventbrite
+Fever
+ClickAndPlan
+SERVICIO
+Plataforma para encontrar y organizar grupos de interés común.
+Plataforma para vender entradas y gestionar eventos.
+Aplicación para descubrir eventos y planes de ocio alrededor del mundo.
+Organización y reserva de planes de ocio y experiencias en España.
+PRECIOS
+Unión a grupos y crear eventos gratuitos. Tarifas para eventos de pago y funciones adicionales.
+Descargar y uso gratuitos, con tarifas para eventos de pago.
+Descargar y uso gratuitos. Tarifas para algunos eventos.
+Descargar y uso gratuitos. Tarifas para algunos planes y experiencias.
+DIFUSIÓN
+Difusión  a través de sus respectivas aplicaciones, sitios web y
+redes sociales.
+DISTRIBUCIÓN
+Todas las aplicaciones pueden obtenerse mediante las tiendas en línea
+App Store 
+y Google
+ Play.
+VENTAJAS
+Comunidad global, amplia variedad de actividades y funciones para organizar eventos.
+Reconocimiento de marca, plataforma robusta para gestionar eventos, opciones de pago flexibles.
+Interfaz atractiva, recomendaciones personalizadas, enfoque en experiencias únicas y reconocimiento de marca.
+Amplia variedad de categorías disponibles, posibilidad de publicar planes propios, centrado principalmente en ciudades españolas
+DESVENTAJAS
+Alcance global, con mayor popularidad en países extranjeros como USA o Canadá.
+Centrada en eventos de pago, con tarifas que pueden ser altas para eventos pequeños.
+Poca variedad de eventos en algunas ciudades, enfoque en eventos de pago.
+Interfaz mejorable, no está enfocada únicamente en la ciudad de Zaragoza.
+Una vez observados los detalles más característicos acerca de nuestra competencia, especialmente sobre sus desventajas y precios, podemos establecer ciertas 
+estrategias de acción
+ las cuales nos ayudarán a lograr una mayor solidez y ventajas con respecto al enfoque que tiene nuestro proyecto. Algunas de estas ventajas son las siguiente:
+A pesar de que todas las aplicaciones comparten la idea de organizar y participar en eventos, actividades, grupos sociales, etc.,... cada una tiene un 
+enfoque propio
+. Algunas de ellas enfocadas en eventos profesionales de pago mientras que otras buscan un alcance internacional. En nuestro caso, nos dirigimos principalmente a la gente joven de la ciudad de Zaragoza que desea formar nuevas amistades con intereses similares de forma rápida y eficaz, o participar en actividades dentro de su localidad. Es por esto que ofrecemos una 
+visión distintiva del resto
+.
+Con respecto a la 
+popularidad y alcance
+, todas tratan de llegar a un público internacional, excepto por ClickAndPlan, que es más similar a nuestra propuesta al estar dirigida a diferentes ciudades dentro de nuestro país. Es por esto que, a pesar de que a nivel global el resto de aplicaciones van a contar con una mayor cantidad de usuarios, nuestra aplicación podrá alcanzar una mayor “densidad de popularidad”. Esto es debido a que, al estar hecha específicamente para los habitantes de Zaragoza, podrá gozar de una mayor personalidad y ser 
+difundida con mayor facilidad y eficacia
+ a diferencia de nuestras competidoras.
+Debido a nuestro enfoque en la ciudad de Zaragoza, contaremos con un 
+público mucho más concreto
+, y gracias a su feedback (opiniones a través de las reseñas de App Store y Google Play, comunicación con establecimientos y empresas locales que hagan uso de nuestra aplicación, formularios y encuestas directas a los usuarios,...) podremos ofrecer una interfaz y funciones más 
+personalizadas y refinadas
+. De esta forma, los usuarios obtendrán una experiencia satisfactoria, a la par que familiar y única.
+En 
+apartados posteriores
+ 
+analizaremos el número de usuarios que manejan algunas de estas empresas y obtendremos una visión del posible éxito de nuestra aplicación y cómo ésta puede ser rentable económicamente.
+3.3. ESTUDIO DE MERCADO
+En este apartado expondremos las conclusiones que hemos sacado tras investigar vía encuestas online y entrevistas por la calle a diversos grupos de personas que encajaban dentro de nuestro perfil de público objetivo.
+3.3.1 CLIENTES POTENCIALES
+Tras un estudio previo y varias consultas hemos determinado que el mejor público al que podríamos dirigir una aplicación como esta son 
+usuarios de Zaragoza
+ de edades comprendidas 
+entre 16 a 30 años
+ que por unas circunstancias u otras se vean en la necesidad de tener un grupo de personas con el que realizar actividades, ya sea esta actividad entrenar un determinado deporte, como simplemente desarrollarse y crecer dentro de un ambiente social, de el que por algún motivo (son nuevos en la ciudad, sus amigos no están presentes…) no pueden disfrutar.
+Dado que nuestro proyecto está muy centrado en una 
+comunidad concreta
+ podremos dar un servicio muy personalizado, y teniendo en cuenta que además pretendemos implementar una función de atención al cliente y diversas encuestas periódicas, nos permitirá saber en todo momento si nuestra aplicación está cumpliendo su objetivo y si los clientes están satisfechos con ella.
+Para concluir, nos gustaría añadir que hemos elegido este segmento del mercado porque hemos notado un creciente pico en la 
+sensación de soledad
+ dentro de estos grupos antes especificados (aunque no solo pasa en estos) desde los eventos del COVID-19. Además nos fijamos en que ninguna de las aplicaciones actuales cubre de forma realmente eficiente esta necesidad, así que nosotros decidimos ponerle fin creando MyEventZ.
+3.3.2 ESTUDIO DEL CONSUMIDOR
+Como hemos mencionado anteriormente, realizamos tanto encuestas anónimas a través de Google Forms como entrevistas aleatorias a gente de las calles de Zaragoza considerados posibles clientes potenciales de nuestra aplicación. 
+Todas las estadísticas y porcentajes están obtenidos de entrevistas a personas aleatorias en la calle y encuestas anónimas a través de Google Forms.
+ENCUESTAS
+Primero, analizaremos las respuestas de los usuarios que realizaron las 
+encuestas en línea
+, los cuales opinaron acerca de la idea de la aplicación, su diseño, utilidades, ideas… Tras difundir y animar a realizar la encuesta a familiares, amigos y antiguos compañeros de clase de cada uno de los integrantes del equipo, obtuvimos un total de
+ 32 encuestas
+ realizadas por voluntarios.
+Pregunta 1: ¿Usarías la aplicación MyEventZ? 
+Dentro de los encuestados, vimos cómo un 
+87%
+ de ellos respondieron 
+positivamente
+ a que usarían la aplicación, en contraposición de un 13% que decían que no harían uso de ella. Con estas estadísticas confirmamos que la mayoría de los encuestados 
+considerarían
+ darle una oportunidad a nuestra aplicación.
+Pregunta 2: ¿Qué opinas de la interfaz gráfica de MyEventZ?
+E
+l porcentaje de gente a la que le 
+agrado la interfaz
+ de la aplicación (colores, logo, diseños de botones…) fue de un 
+92%
+ frente a un 3% que objetaron que no les parecía ni agradable ni desagradable, y un 5% que declararon que no les agradaba.
+Pregunta 3: ¿Qué cambios harías dentro de la aplicación?
+Siendo esta
+ una pregunta más abierta describiremos las respuestas más repetidas y similares, las cuales son las siguientes:
+Los usuarios desean que 
+no se abandone la aplicación
+ como ha pasado con algunos de sus competidores actuales del mercado.
+Los usuarios también desean que el equipo de desarrollo de la aplicación no implemente demasiadas
+ funcionalidades de pago
+ o 
+anuncios
+.
+Y por último se ha mencionado en menor medida que se tenga en cuenta la 
+opinión del usuario
+ realmente, por ejemplo realizando encuestas periódicas o con las propias valoraciones de Play Store y App Store.
+Pregunta 4: ¿Recomendarías a otras personas la aplicación MyEventZ?
+En las encuestas online nos encontramos con un 
+98% 
+de personas que 
+sí 
+la recomendaría frente a un 2% que no.
+ENTREVISTAS
+Decidimos lanzarnos a las calles de Zaragoza a entrevistar a voluntarios, explicándoles la idea y propósito de nuestra aplicación para conocer sus opiniones y escuchar sus propuestas de cara a mejorarla y consideraciones a tener en cuenta. 
+A continuación, analizaremos las respuestas de los 
+6 entrevistados
+ a las siguientes preguntas, las cuales en su mayoría, coincidieron en muchos aspectos:
+¿Usarías MyEventz? ¿Por qué?
+¿Qué características consideras esenciales para la aplicación?
+¿Qué crees que no debería tener la aplicación?
+Link al video resumen de las entrevistas
+.
+Pregunta 1: ¿Usarías la aplicación MyEventZ? ¿Por qué?
+De entre todos los entrevistados, únicamente uno de ellos expresó que no usaría la aplicación, al tener preferencia  por realizar actividades con gente de su círculo más cercano e íntimo. El resto de entrevistados afirmaron que 
+le darían una oportunidad
+ a la aplicación al parecerles una 
+buena idea
+ para incentivar la socialización y ayudar a aquellos que se encuentran en situaciones de soledad como las que MyEventz pretende solventar.
+Pregunta 2: ¿Qué características consideras esenciales para la aplicación?
+En esta pregunta, los entrevistados coincidieron en que la aplicación debería contar con una amplia variedad de 
+categorías y hobbies
+ de todo tipo, evitando que ninguna actividad se quede excluida y así todo el mundo pueda organizar eventos. Uno de ellos añadió que también sería importante implementar un 
+filtro o limitación por edades
+.
+Pregunta 3: ¿Qué crees que no debería tener la aplicación?
+A esta última pregunta ninguno supo qué responder, excepto uno de ellos. Consideró que lo único que le podría perjudicar a la aplicación serían 
+usuarios que no asistan
+ a los eventos a los que se hayan apuntado, creando así expectativas para actividades en las que realmente acaba participando menos gente de la apuntada en la publicación dentro de la aplicación.
+3.4. ANÁLISIS INTERNO
+En el núcleo de MyEventZ, nuestro equipo con una visión sólida trata de impulsar la conexión en la comunidad de Zaragoza. A continuación, exploramos quiénes somos, destacando fortalezas individuales y abordando estratégicamente las áreas de crecimiento en nuestro análisis interno.
+3.4.1 Gabriel Milagro López
+Formación académica:
+ 
+tras finalizar el Bachillerato Tecnológico, realizó el ciclo formativo de grado superior de 
+Administración de Sistemas Informáticos en Red
+. Actualmente está en proceso de completar el ciclo de 
+Desarrollo de Aplicaciones Multiplataforma
+ en el centro San Valero de Zaragoza, el cual decidió comenzar para que le sirviera como formación complementaria a la que ya tenía y para abrir su abanico de posibilidades de cara a futuro.
+Experiencia laboral:
+ 
+a pesar de que todavía no ha dado el salto a la vida laboral, realizó un aproximado de tres meses de FCTs correspondientes a su primer ciclo formativo. Estos tres meses estuvo encargado principalmente de gestionar el sistema de inventariado y como técnico en soporte informático en el 
+Hospital Reina Sofía de Tudela
+, donde aprendió mucho siendo guiado por los integrantes del departamento de informática.
+Puntos fuertes:
+ 
+a nivel individual resulta bastante 
+independiente
+, capaz de resolver problemas de forma autónoma, algo que ayuda en gran medida a no entorpecer el trabajo de sus compañeros. Además es una persona 
+proactiva
+, de forma que no depende de que deba tener alguien haciendo presión y constancia en él para que lleve a cabo su trabajo. Finalmente, cuenta con una 
+capacidad organizativa
+ que no solo le permite realizar sus tareas de forma eficiente, sino que también lo hace a la hora de trabajar en equipo con el resto de integrantes.
+Puntos débiles:
+ 
+entre sus características más inconvenientes, la más notable es la 
+procrastinación
+. Esta se presenta principalmente ante la posible falta de motivación, falta de ideas o la falsa sensación de que una tarea le puede superar. Por suerte, esto es algo que se puede mitigar fácilmente tratando de mantener la constancia junto al resto del equipo, generando un ambiente de ánimo y motivación para mantener las ganas de continuar trabajando en el proyecto y que retomar las tareas no lo perciba como una tarea mayor de lo que realmente es.
+3.4.2 Carlos Fernández Guevara
+Formación académica:
+ 
+tras finalizar el Bachillerato Científico, comenzó el Grado Superior de 
+Desarrollo de Aplicaciones Multiplataforma
+ en el centro San Valero de Zaragoza. Decidió embarcarse en esta formación por la recomendación que le dió un ex alumno del mismo grado, Alberto Borraz.
+Experiencia laboral:
+ 
+trabajó previamente en un Decathlon de Zaragoza situado en la Plaza Aragón, un local pequeño de la cadena de tiendas de productos de deporte, en el que los trabajadores debían especializarse en el 
+trato cercano al cliente
+ para asegurar el retorno de estos a la tienda. Actualmente trabaja como becario dentro de la firma 
+Deloitte
+.
+Puntos fuertes:
+ 
+dentro de sus puntos fuertes encontramos el más llamativo que es su 
+soltura para relacionarse
+ con las personas, muy aprovechable en el campo de la atención al cliente sobre todo. También cabe destacar que es una persona 
+muy disciplinada
+ que cuando empieza algo lo termina.
+Puntos débiles:
+ 
+entre sus puntos débiles cabe destacar la falta de algunos 
+conocimientos técnicos
+ sobre la programación de aplicaciones móviles y en algunos casos la falta de 
+concentración
+ debido a que tiene demasiados eventos convergiendo en su vida en este momento.
+3.4.3 Jorge Alquézar
+Formación académica:
+ 
+después de finalizar el Bachillerato Científico, entró en el ciclo formativo de grado superior de 
+Desarrollo de Aplicaciones Multiplataforma
+ en el centro San Valero de Zaragoza, el cual está finalizando actualmente. Además optó por la formación 
+DUAL
+, apostando por este método de aprendizaje para ganar experiencia laboral y exprimir al máximo el aprendizaje y posibilidades. Gracias a estas titulaciones y un curso certificado en la utilización de herramientas colaborativas del entorno de 
+Microsoft 365
+ impartido por el INAEM, dispone de un gran historial de conocimientos certificados a pesar de su corta edad, demostrando ser una persona trabajadora y que aprovecha todas las
+ oportunidades disponibles.
+Experiencia laboral:
+ 
+a pesar de no disponer ninguna experiencia laboral real, sin contar la experiencia de la 
+formación DUAL
+, piensa en continuar trabajando en empresa una vez acabada la titulación de DAM, además de continuar formándose en la informática y programación a través de más grados y de certificaciones.
+Puntos fuertes:
+ 
+a nivel personal se considera una persona 
+trabajadora, seria y responsable
+, cumpliendo con todo lo que se propone. A parte de todo eso, sus conocimientos previos y 
+gran pasión
+ por la informática y tecnología de todo tipo, le otorgan ventajas y facilidades para poder resolver cualquier problema presentado en este ámbito, cosa que será fundamental para 
+afrontar las dificultades
+ que se puedan presentar a lo largo del desarrollo técnico y hosteo, sistema y gestión de las redes e infraestructuras necesarias.
+Puntos débiles:
+ 
+su principal debilidad es la 
+procrastinación
+, ya que suele posponer mucho las cosas y dejarlas para última hora. Además aunque no lo pueda parecer es una persona que en ciertos aspectos es bastante 
+desorganizada
+, cosa que puede afectar luego a la hora de buscar alguna cosa o error, sobre todo cuando vaya escalando el proyecto en longitud y complejidad, por lo que si no establece una base sólida a seguir podría dar lugar a un descontrol y caos.
+3.5. ANÁLISIS DAFO
+Para explorar la viabilidad y futuro de nuestro proyecto, hemos realizado un análisis de las principales debilidades, amenazas, fortalezas y oportunidades que envuelven nuestro proyecto y cómo pueden afectar a su desarrollo.
+3.5.1. DEBILIDADES
+Dependencia tecnológica:
+ 
+la aplicación depende de la estabilidad y compatibilidad con los dispositivos móviles. Problemas técnicos, actualizaciones de sistemas operativos o cambios en las plataformas pueden afectar negativamente la funcionalidad de la aplicación, por lo que habrá que atender todos los posibles reportes sobre problemas que puedan experimentar los usuarios. Además, habrá que tener un constante mantenimiento de los servicios de los que dependa la aplicación, como por ejemplo los servidores de bases de datos.
+Financiación:
+ 
+el desarrollo y lanzamiento de una aplicación móvil exitosa requieren una inversión significativa en desarrollo de software, diseño, marketing y posiblemente servidores para manejar la carga de usuarios. Esto es algo importante a tener en cuenta ya que no gozará de la popularidad que tiene como objetivo a alcanzar hasta pasadas las fase inicial de desarrollo y lanzamiento.
+Falta de popularidad inicial:
+ 
+nos enfrentaremos a la dificultad de atraer usuarios debido a su falta de reconocimiento provocado por la competencia existente o a la falta de conciencia sobre la aplicación. Se requerirá una estrategia de marketing sólida mediante el uso de redes sociales, colaboraciones con influencers locales y campañas publicitarias específicas de Zaragoza pueden ser clave para aumentar la visibilidad y atraer a los primeros usuarios.
+3.5.2. AMENAZAS
+Competencia local:
+ 
+la existencia de aplicaciones similares centradas en eventos puede generar una competencia directa. Para superar esto, la aplicación debe destacar ofreciendo características únicas, una interfaz intuitiva y una sólida base de usuarios. Si los usuarios ya están acostumbrados a utilizar otras aplicaciones similares, puede ser un desafío persuadirlos para que cambien a la nueva plataforma.
+Cambio en los hábitos de los usuarios:
+ 
+los cambios de preferencias por diferentes tipos de eventos o formas de socializar, pueden afectar la demanda de la aplicación. Es fundamental tener un enfoque flexible y mantener actualizaciones con respecto a las tendencias sociales.
+Obsolescencia:
+ 
+la constante evolución de la tecnología móvil puede llevar a la obsolescencia de la aplicación si no se actualiza regularmente. Deberemos planificar actualizaciones de forma frecuente para generar un sentimiento de desarrollo e innovación entre nuestros usuarios.
+3.5.3. FORTALEZAS
+Enfoque local:
+ centrarse en Zaragoza nos brinda una oportunidad para construir una conexión sólida con la comunidad local. Esto puede generar un reconocimiento más rápido en la ciudad, ya que la aplicación se adapta específicamente a las necesidades e intereses de la población zaragozana.
+Variedad de categorías:
+ 
+ofrecemos una amplia gama de categorías de eventos atraerá a usuarios con todo tipo de intereses. Esto amplía la base de usuarios potenciales y garantiza que la aplicación sea relevante para un público más amplio. Los usuarios pueden explorar y participar en eventos en base a  sus intereses, lo que fomenta la participación en los mismos.
+Herramienta social:
+ la aplicación actúa como un facilitador social al brindar la oportunidad de conocer a otras personas con intereses similares. Al proporcionar una plataforma donde los recién llegados pueden integrarse más fácilmente y donde los habitantes locales pueden ampliar sus círculos sociales, la aplicación contribuye positivamente a la comunidad.
+3.5.4. OPORTUNIDADES
+Colaboraciones locales:
+ establecer este tipo de colaboraciones puede fortalecer la presencia de la aplicación en la comunidad. Lo que puede traducirse en promociones conjuntas, eventos patrocinados y una mayor participación de la comunidad. Esto no solo aumenta el atractivo de la aplicación, sino que también beneficia a los usuarios al proporcionarles experiencias únicas.
+Feedback de los usuarios:
+ recopilar y utilizar el feedback de los usuarios permitirá un mejora continua de la aplicación. Esto es algo que podremos llevar a cabo a través de encuestas, reseñas o interacciones directas en eventos. Involucrar a los usuarios en el proceso de desarrollo puede generar un sentido de propiedad y lealtad hacia la aplicación.
+Capacidad de expansión:
+ a pesar de que la aplicación está inicialmente centrada en Zaragoza, existe la oportunidad de expandirse a otras ciudades o regiones según el grado de éxito y popularidad que esta alcance. Esto puede aprovecharse especialmente si los usuarios muestran interés en llevar la plataforma a otras localidades. Esta posible expansión también se relaciona con la adquisición continua de usuarios a través de marketing y campañas específicas que puedan acelerar el crecimiento.
+4. REQUISITOS DEL SISTEMA
+4.1. REQUISITOS FUNCIONALES
+A continuación, proporcionaremos los requisitos funcionales de nuestra aplicación, donde detallaremos las funciones específicas que realizará su software:
+1. Registrar una nueva cuenta: 
+En caso de que un usuario no tenga una cuenta, podrá crear una nueva indicando sus datos (nombre, apellidos, nombre de usuario, correo, contraseña, …). La tarea debe tener un campo para el nombre, descripción y fecha de vencimiento.
+2. Inicio de sesión: 
+El usuario podrá acceder a la aplicación con su cuenta personal haciendo uso de sus credenciales de inicio de sesión (nombre y contraseña).
+3. Mostrar eventos publicados: 
+Cuando un usuario inicie sesión, 
+accederá
+ al “centro de eventos” donde serán mostrados diferentes listados de eventos que le puedan ser de interés.
+4. Filtrar eventos: 
+Dentro del “centro de eventos” se encontrará una sección de filtrado, donde el usuario podrá listar eventos en base a diferentes parámetros que indique, como tipo de evento, número de participantes, edad o precio entre otros.
+5. Visualizar información de un evento: 
+Si un usuario desea conocer más información sobre alguno de los eventos que le han sido mostrados a lo largo de los diferentes listados, tendrá la posibilidad de acceder a una nueva pantalla, en la que le será mostrada toda la información disponible sobre el mismo en mayor detalle.
+6. Participación en un evento: 
+Al acceder a la vista detallada de un evento, el usuario podrá apuntarse al mismo, y quedará listado entre todos los usuarios que han decidido participar. También contará con la posibilidad de 
+desapuntarse
+ en caso de que lo desee.
+7. Acceso al perfil de usuario: 
+Los usuarios podrán acceder a su perfil, donde se mostrará la información de su cuenta. A su vez, podrán editar algunos de sus datos y actualizarlos en la base de datos.
+8. Publicar nuevos eventos: 
+Un usuario podrá publicar nuevos eventos con su respectiva información, como por ejemplo: lugar, fecha, rango de edad, categoría, descripción, requisitos, …
+9. Ver eventos publicados: 
+Podrá acceder a un listado de eventos que tenga publicados actualmente. Además, podrá visualizar un historial de todos los eventos publicados con anterioridad y que ya se hayan realizado.
+10. Listar eventos en los que se ha participado: 
+Los usuarios contarán con un listado de, tanto los eventos con los que están apuntados actualmente, como un historial de eventos en los que ya haya participado.
+11. Guardar eventos en lista de deseados: 
+Si un usuario está interesado en participar en un evento, pero aún no está decidido a inscribirse, podrá guardarlo en un listado personal de “deseados”.
+En las siguientes tablas observaremos una catalogación más específica sobre cada uno de los requisitos funcionales mencionados previamente. 
+RF001
+Registrar una nueva cuenta.
+VERSIÓN
+V0.1.1
+DEPENDENCIAS
+Servidor de bases de datos operativo y listo para recibir peticiones de inserción.
+DESCRIPCIÓN
+El usuario deberá poder darse de alta y crear una nueva cuenta con la cual pueda acceder a la aplicación.
+IMPORTANCIA
+Alta.
+PRIORIDAD
+Alta.
+ESTADO
+Planificado.
+COMENTARIOS
+RF002
+Inicio de sesión.
+VERSIÓN
+V0.1.2
+DEPENDENCIAS
+Servidor de bases de datos operativo y listo para recibir peticiones de consulta.
+RF001 - Registrar una nueva cuenta.
+DESCRIPCIÓN
+Cuando un usuario posea una cuenta ya creada, podrá acceder a la aplicación usando sus credenciales de inicio de sesión.
+IMPORTANCIA
+Alta.
+PRIORIDAD
+Alta.
+ESTADO
+Planificado.
+COMENTARIOS
+Cuando un usuario inicie sesión, 
+accederá
+ al “centro de eventos”.
+RF003
+Mostrar eventos publicados.
+VERSIÓN
+V0.2.1
+DEPENDENCIAS
+RF002 - Inicio de sesión.
+DESCRIPCIÓN
+Al acceder a la aplicación con la cuenta de usuario, se mostrará el “centro de eventos” donde se mostrarán los eventos que hay publicados actualmente en la aplicación.
+IMPORTANCIA
+Alta.
+PRIORIDAD
+Media.
+ESTADO
+Planificado.
+COMENTARIOS
+Se mostrarán diferentes tipos de listados, como por ubicación más cercana, número de participantes inscritos, …
+RF004
+Filtrado de eventos.
+VERSIÓN
+V0.2.2
+DEPENDENCIAS
+RF003 - Mostrar eventos publicados.
+DESCRIPCIÓN
+Una sección donde el usuario podrá filtrar eventos en función de diferentes parámetros.
+IMPORTANCIA
+Media.
+PRIORIDAD
+Media.
+ESTADO
+Planificado.
+COMENTARIOS
+RF005
+Vista detallada de un evento.
+VERSIÓN
+V0.2.3
+DEPENDENCIAS
+RF003 - Mostrar eventos publicados.
+DESCRIPCIÓN
+Será posible acceder a una nueva vista donde se mostrará la información completa de cada evento.
+IMPORTANCIA
+Alta.
+PRIORIDAD
+Alta.
+ESTADO
+Planificado.
+COMENTARIOS
+RF006
+Participación en un evento.
+VERSIÓN
+V0.3
+DEPENDENCIAS
+RF003 - Vista detallada de un evento.
+DESCRIPCIÓN
+Entre los elementos de la vista detallada, se encontrará un botón a través del cual el usuario podrá inscribirse en el evento seleccionado.
+IMPORTANCIA
+Alta.
+PRIORIDAD
+Media.
+ESTADO
+Planificado.
+COMENTARIOS
+RF007
+Acceso a mi perfil de usuario.
+VERSIÓN
+V0.4.1
+DEPENDENCIAS
+Servidor de bases de datos operativo y listo para recibir peticiones de consulta.
+RF002 - Inicio de sesión.
+DESCRIPCIÓN
+Los usuarios podrán acceder a su perfil, donde se mostrará la información de su cuenta. A su vez, podrán editar algunos de sus datos y actualizarlos en la base de datos.
+IMPORTANCIA
+Alta.
+PRIORIDAD
+Media.
+ESTADO
+Planificado.
+COMENTARIOS
+RF008
+Publicar nuevos eventos.
+VERSIÓN
+V0.4.2
+DEPENDENCIAS
+RF002 - Inicio de sesión.
+RF007 - Acceso a mi perfil de usuario.
+DESCRIPCIÓN
+Un usuario podrá publicar nuevos eventos con su respectiva información, como por ejemplo: lugar, fecha, rango de edad, categoría, descripción, requisitos, …
+IMPORTANCIA
+Media.
+PRIORIDAD
+Media.
+ESTADO
+Planificado.
+COMENTARIOS
+Esta opción se encontrará dentro de la vista de perfil de usuario, en la cual se encontrarán otras funcionalidades acerca de los eventos publicados y en los que se participe.
+RF009
+Ver eventos publicados.
+VERSIÓN
+V0.4.3
+DEPENDENCIAS
+RF002 - Inicio de sesión.
+RF007 - Acceso a mi perfil de usuario.
+DESCRIPCIÓN
+Podrá acceder a un listado de eventos que tenga publicados actualmente, así como un 
+historial de todos los eventos publicados con anterioridad y que ya se hayan realizado
+.
+IMPORTANCIA
+Media.
+PRIORIDAD
+Media.
+ESTADO
+Planificado.
+COMENTARIOS
+RF010
+Listar eventos en los que se ha participado.
+VERSIÓN
+V0.4.4
+DEPENDENCIAS
+RF002 - Inicio de sesión.
+RF007 - Acceso a mi perfil de usuario.
+DESCRIPCIÓN
+Los usuarios contarán con un listado de, tanto los eventos con los que están apuntados actualmente, como un historial de eventos en los que ya haya participado.
+IMPORTANCIA
+Media.
+PRIORIDAD
+Media.
+ESTADO
+Planificado.
+COMENTARIOS
+RF011
+Guardar eventos en lista de deseados.
+VERSIÓN
+V0.4.5
+DEPENDENCIAS
+RF002 - Inicio de sesión.
+RF007 - Acceso a mi perfil de usuario.
+DESCRIPCIÓN
+Si un usuario está interesado en participar en un evento, pero aún no está decidido a inscribirse, podrá guardarlo en un listado personal de “deseados”.
+IMPORTANCIA
+Alta.
+PRIORIDAD
+Alta.
+ESTADO
+Planificado.
+COMENTARIOS
+En etapas posteriores del desarrollo, añadiremos una función de notificación en caso de que sea muy próxima la fecha de realización de un evento que se encuentre en la lista.
+4.2. REQUISITOS NO FUNCIONALES
+A continuación mostraremos los requisitos centrados en propiedades del sistema, estableciendo las limitaciones o restricciones del mismo:
+1. Usabilidad: 
+Interfaz intuitiva y agradable para el usuario, capaz de adaptarse a diferentes tamaños de pantalla.
+2. Compatibilidad: 
+Funcionamiento en la mayor cantidad posible de dispositivos móviles con sistema operativo Android. Integración con características nativas del dispositivo como el GPS.
+3. Seguridad: 
+Correcto almacenamiento y tratamiento de datos del usuario, cumpliendo con la Ley Orgánica de Protección de Datos. Uso de métodos de autenticación y acceso seguros, usando técnicas de cifrado cuando sea necesario.
+4. Rendimiento: 
+Ofrecer tiempos de carga lo más reducidos posible, para ofrecer una experiencia de usuario lo más ininterrumpida posible. La aplicación podrá funcionar en dispositivos tanto de alta, como de media y baja gama.
+5. Escalabilidad: 
+La aplicación estará lo más optimizada posible para que no sufra bajones de rendimiento en caso de que haya un aumento de los usuarios concurrentes. El servidor de bases de datos será capaz de gestionar la información de una gran cantidad de eventos y usuarios.
+6. Accesibilidad: 
+La interfaz y funciones serán lo más intuitivas posible, para que cualquier nuevo usuario pueda hacer uso de ellas sin apenas ningún conocimiento previo. La aplicación podrá ser usada en dispositivos de todas las gamas, de forma que estos no sean un impedimento a la hora de hacer uso de ella.
+7. Mantenimiento: 
+La aplicación se mantendrá actualizada de forma constante, solucionando posibles problemas de funcionamiento que reporten nuestros usuarios y añadiendo posibles nuevas funcionalidades que optimicen o mejoren la experiencia de usuario.
+En las siguientes tablas observaremos una catalogación más específica sobre cada uno de los requisitos no funcionales mencionados previamente. 
+RNF001
+Usabilidad
+.
+VERSIÓN
+V0.0.1
+DEPENDENCIAS
+Equipo de diseño con experiencia en este tipo de aplicación.
+Pruebas de uso de la interfaz con personas ajenas al equipo de desarrollo.
+DESCRIPCIÓN
+Interfaz intuitiva y agradable para el usuario, capaz de adaptarse a diferentes tamaños de pantalla.
+IMPORTANCIA
+Alta.
+PRIORIDAD
+Alta.
+ESTADO
+Planificado.
+COMENTARIOS
+RNF00
+2
+Compatibilidad
+.
+VERSIÓN
+V0.0.1
+DEPENDENCIAS
+Acceso a diferentes dispositivos Android para realizar pruebas de compatibilidad.
+DESCRIPCIÓN
+Funcionamiento en la mayor cantidad posible de dispositivos móviles con sistema operativo Android.
+IMPORTANCIA
+Alta.
+PRIORIDAD
+Alta.
+ESTADO
+Planificado.
+COMENTARIOS
+RNF00
+3
+Seguridad
+.
+VERSIÓN
+V0.0.1
+DEPENDENCIAS
+Conocimientos en seguridad informática e implementación de métodos de manejo cifrado de datos.
+DESCRIPCIÓN
+Correcto almacenamiento y tratamiento de datos del usuario, usando técnicas de cifrado cuando sea necesario.
+IMPORTANCIA
+Alta.
+PRIORIDAD
+Alta.
+ESTADO
+Planificado.
+COMENTARIOS
+RNF00
+4
+Rendimiento
+.
+VERSIÓN
+V0.0.1
+DEPENDENCIAS
+Infraestructura de alojamiento y servidores.
+Optimización de código y consultas de base de datos para mejorar la eficiencia.
+DESCRIPCIÓN
+Ofrecer una experiencia de usuario lo más ininterrumpida posible en dispositivos tanto de alta, como de media y baja gama.
+IMPORTANCIA
+Alta.
+PRIORIDAD
+Alta.
+ESTADO
+Planificado.
+COMENTARIOS
+RNF00
+5
+Escalabilidad
+.
+VERSIÓN
+V0.0.1
+DEPENDENCIAS
+Planificación de recursos a corto y largo plazo.
+DESCRIPCIÓN
+La aplicación estará lo más optimizada posible. El servidor de bases de datos será capaz de gestionar la información de una gran cantidad de eventos y usuarios.
+IMPORTANCIA
+Alta.
+PRIORIDAD
+Media.
+ESTADO
+Planificado.
+COMENTARIOS
+RNF00
+6
+Accesibilidad
+.
+VERSIÓN
+V0.0.1
+DEPENDENCIAS
+Planificación de recursos a corto y largo plazo.
+DESCRIPCIÓN
+Cualquier nuevo usuario podrá hacer uso de la aplicación sin apenas ningún conocimiento previo. La aplicación podrá ser usada en dispositivos de todas las gamas, de forma que estos no sean un impedimento a la hora de hacer uso de ella.
+IMPORTANCIA
+Alta.
+PRIORIDAD
+Media.
+ESTADO
+Planificado.
+COMENTARIOS
+RNF00
+7
+Mantenimiento
+.
+VERSIÓN
+V0.0.1
+DEPENDENCIAS
+Destinar parte del equipo de desarrollo a mantener la aplicación actualizada de forma periódica.
+DESCRIPCIÓN
+La aplicación se mantendrá actualizada de forma constante, solucionando posibles problemas de funcionamiento que reporten nuestros usuarios y añadiendo posibles nuevas funcionalidades que optimicen o mejoren la experiencia de usuario.
+IMPORTANCIA
+Media.
+PRIORIDAD
+Media.
+ESTADO
+Planificado.
+COMENTARIOS
+5. PROTOTIPADO DE PANTALLAS
+A continuación vamos a revisar la 
+interfaz de la aplicación
+ y las
+ funcionalidades principales
+. Primero, al abrir la aplicación, nos encontraremos con el
+ inicio de sesión
+, donde deberemos indicar nuestras credenciales para poder acceder. Si las credenciales son incorrectas, se le notificará al usuario a través de un mensaje en pantalla.
+Al iniciar sesión, el usuario 
+accederá
+ con un 
+token identificativo
+ el cual le servirá para ese inicio de sesión único, aumentando así la seguridad de la aplicación
+En caso de que un futuro usuario no cuente todavía con una cuenta registrada en la aplicación, podrá 
+crear una nueva
+ especificando los datos indicados a lo largo de las pantallas de registro de usuario.
+Una vez hayamos accedido con nuestra cuenta, se nos mostrará la 
+pantalla principal
+ en la que se mostrará un listado con los eventos publicados 
+más populares
+ del momento, es decir, aquellos pendientes de realizar que cuenten con una mayor cantidad de participantes inscritos.
+Justo debajo, se 
+listarán
+ aquellos 
+eventos más próximos
+, sin importar el número de participantes o categorías asignadas.
+En la parte inferior, observaremos una 
+barra de navegación
+ a través de la cual podremos viajar al resto de secciones de la aplicación.
+Al presionar el segundo botón de la barra de navegación comenzando por la izquierda, como queda marcado en la imagen, 
+abriremos
+ la 
+sección de categorías 
+de la aplicación. Aquí podremos buscar entre la gran variedad de categorías de actividades, deportes, hobbies, etc. de las que dispone la aplicación. Cuando seleccionemos una o varias de estas categorías, se realizará un filtrado entre todos los eventos publicados por nuestros usuarios, mostrando únicamente aquellos cuyas categorías coincidan con las que hemos seleccionado. 
+Cuando hayamos filtrado por categorías, se nos mostrará una pantalla muy similar a la inicial visualizando los eventos filtrados. Además, aparecerán dos botones, uno de ellos para volver a la selección de categorías, y el otro para eliminar todos los filtros. Así, podremos acceder a los eventos que puedan coincidir con nuestros intereses.
+Cuando 
+accedamos
+ a cualquiera de los 
+eventos
+, se nos mostrará toda la información correspondiente sobre el mismo. Entre esta información encontraremos:
+Título del evento.
+Fecha y hora de realización.
+Categorías relacionadas.
+Descripción del evento.
+Rango de edad permitido.
+Ubicación en la que se realizará.
+Organizador y participantes.
+En la parte inferior, se encontrará el botón con el que los usuarios podrán alistarse a la actividad, aunque en caso de que ya estén inscritos, les dará la opción de desapuntarse.
+En caso de que el evento sea uno organizado por tí mismo, tendremos la opción de eliminarlo.
+A través del penúltimo botón de la barra de navegación podremos buscar (por nombre, apellidos o usuario) entre todos los
+ usuarios
+ que están registrados en la aplicación y acceder a la información de su perfil, donde se mostrará:
+Nombre completo.
+Nombre de usuario.
+Biografía.
+Categorías de su interés.
+Eventos publicados.
+Actividades participadas.
+Redes sociales.
+Con el último botón de la aplicación se podrá mostrar el 
+perfil del usuario
+ con el que se ha iniciado sesión. A diferencia de la pantalla anterior, en esta se mostrarán dos botones con los que el usuario podrá acceder a la pantalla de edición de datos de su cuenta, o cerrar sesión.
+Finalmente, usando el botón central de la barra de navegación, accederemos a la pantalla de configuración y 
+publicación de eventos
+, donde podremos especificar todos los datos de una actividad que queramos realizar.
+6. BASE DE DATOS DEL SISTEMA
+A continuación analizaremos la base de datos en la que se almacenará toda la información de la aplicación, revisando primero las tablas principales y después las relaciones que las unen.
+6.1. ENTIDADES
+Primero, analizaremos cada una de las entidades principales que componen el esquema, indicando los datos que contienen.
+USUARIOS
+Contiene el nombre completo de los usuarios, fecha de nacimiento, biografía que quiere que se muestre en su perfil y redes sociales (Instagram, X, YouTube y TikTok). Además se almacenará el nombre de usuario y la clave, que servirán de credenciales para el inicio de sesión. De más está decir que la 
+ID
+ 
+de usuario será la 
+clave primaria
+ y se utilizará para identificar de forma más eficaz al usuario a nivel de backend.
+EVENTOS
+Almacenará el título, fecha y hora de realización, descripción, rango de edad, ubicación y número máximo de participantes de un evento publicado. Además de su clave primaria, almacenará como 
+clave foránea
+ la ID del usuario que haya publicado el evento, el cual, se mostrará como organizador y participante en la pantalla correspondiente de la aplicación. De esta forma también se podrán listar rápidamente los eventos publicados por cada usuario.
+CATEGORÍAS
+Almacenará la ID y el nombre de cada categoría. Estas categorías servirán tanto para etiquetar los eventos como para mostrar los hobbies y gustos de los usuarios.
+6.2. RELACIONES
+Vamos a ver cómo interactúan las tablas principales y para qué sirven estas relaciones dentro de la aplicación.
+USUARIOS > EVENTOS
+Esta es una 
+relación 1:N
+ entre usuarios y eventos, ya que un usuario será capaz de publicar muchos eventos, pero un evento solo 
+pertenecerá
+ a un organizador.
+USUARIOS_HOBBIES
+Una 
+relación N:M
+ entre usuarios y categorías, ya que un usuario puede estar interesado en varias categorías y una categoría puede ser seleccionada por varios usuarios.
+EVENTOS_CATEGORIAS
+Relación N:M similar a la anterior. Un evento puede ser etiquetado con diferentes categorías y una categoría puede servir para catalogar muchos eventos.
+PARTICIPANTES_EVENTOS
+Relación N:M que almacena los “tickets” de cada participación en un evento. Además de guardar los IDs de usuario y 
+evento
+, almacena la fecha en la que se ha apuntado el usuario.
+7. ARQUITECTURA
+A través de la siguiente imagen veremos de forma clara y concisa todas las capas que forman el proyecto. Las capas que la componen son:
+Python: backend, API, gestión de peticiones y procesado de datos.
+React Native: frontend, interfaz y funcionalidad de la aplicación..
+MySQL: servidor de bases de datos.
+Firebase: servidor de imágenes para fotos de perfil y banners de eventos.
+En caso de querer conocer más en detalle la forma en que todas las capas interactúan, el funcionamiento de las diferentes peticiones, comunicación con el backend desde cada pantalla de la app, la gestión de la base de datos o la configuración de la API en Python entre otras muchas características del proyecto, podrás visualizar la documentación extensa a través del siguiente link al Github oficial del proyecto:
+https://github.com/CarlosFerGue/TFG-DAM/tree/main/Documentación
+8. PLAN DE MARKETING
+8.1. OBJETIVOS A CORTO, MEDIO Y LARGO PLAZO
+8.1.1. GENERALES
+Nuestro objetivo principal consiste en 
+posicionar a MyEventZ como la
+ 
+principal aplicación
+ de gestión y descubrimiento de eventos en Zaragoza dentro del primer año de operación una vez sido lanzada de forma oficial, mejorando significativamente la 
+conectividad 
+y el 
+acceso 
+a eventos culturales y sociales para los residentes y visitantes.
+Somos conscientes de que se trata de un objetivo bastante ambicioso, pero a pesar de ello y gracias a la poca competencia en el sector y la calidad de la misma, creemos que podemos alcanzarlo con un 
+buen plan de marketing
+ y utilizando las herramientas adecuadas.
+8.1.2. ESPECÍFICOS
+En cuanto a los objetivos específicos, hemos desarrollado un listado de metas a alcanzar especificando el qué queremos conseguir, cuando lo queremos conseguir, y cómo lo vamos a conseguir. Entre ellos los que más destacan son los siguientes:
+Aumentar la base de usuarios en
+ 
+un 20% trimestralmente
+ mediante estrategias de marketing digital y colaboraciones. De esta forma no solo nos beneficiamos nosotros mismos como empresa y aplicación, sino que también los propios usuarios tienen una comunidad y ecosistema más grande donde encontrar más eventos diversos, personas con las que poder realizarlos, posibilidades y gente nueva…
+Establecer al menos cinco alianzas estratégicas
+ 
+con organizadores de eventos locales para promover la aplicación antes del lanzamiento definitivo. Esta meta es esencial para así poder dar a conocer la aplicación lo mejor posible y llegando a la mayor cantidad de gente posible, de forma que podamos crear una base inicial de usuarios activos para que pueda tener vida la propia aplicación, ya que por su propia naturaleza, requiere de usuarios para que puedan existir los eventos, se llenen, y puedan ser atractivos para el resto de usuarios existentes y/o nuevos usuarios.
+Mejorar la retención de usuarios activos
+ en al menos un 
+30%
+ a través de la implementación de características de gamificación y recompensas dentro de la app. Gracias a este objetivo, seremos capaces de tener actividad diaria dentro de la aplicación a pesar de tener cualquier cantidad de usuarios registrados, ya que la actividad es la principal fuente de contenido nuevo en la aplicación a parte de los eventos que puedan organizar entidades oficiales y certificadas (empresas que quieran colaborar con nosotros) o actividades que podamos organizar nosotros mismos para animar e incentivar a la comunidad a utilizar la aplicación y realizar eventos sociales.
+8.2. COMUNICACIÓN
+Además de contar con una aplicación sólida y completa, es esencial establecer una 
+buena comunicación con los usuarios
+ potenciales para dar a conocer nuestra app de forma amplia y eficaz. Por suerte, estamos enfocados en un público relativamente reducido (habitantes de la ciudad de Zaragoza), algo que nos puede ser una gran ventaja para 
+publicitarla y
+ que la gente sepa de ella.
+Como primer paso, decidimos crear 
+cuentas oficiales en redes sociales
+ para la aplicación, como forma de publicidad inicial durante su desarrollo. En este periodo, nos dedicaremos a publicar entrevistas a gente aleatoria sobre temas que puedan estar relacionados con la aplicación (actividades que le gusta realizar a la gente, soledad, alternativas que toman para socializar, la posibilidad de usar una aplicación que les ayude a solventar problemas relacionados,…). De esta forma, comenzaremos a hacer eco en la ciudad y la gente tendrá una mínima idea sobre quiénes somos y lo que pretendemos conseguir.
+Una vez lleguemos a las fases finales del desarrollo, contactaremos con dos de las cuentas con más influencia en redes sociales de toda Zaragoza: 
+SoydeZaragoza y Zinderizar
+. Ambas se dedican a dar voz a eventos, apoyar actividades sociales en la ciudad, incluso llegando a organizar sus propias fiestas y eventos para que la gente acuda a vivir nuevas experiencias y formar amistades. El plan consistiría en presentarles nuestro prototipo final de aplicación, mostrarles como ambos buscamos suplir las mismas necesidades y cómo a todos nos beneficiaría colaborar. Gracias a esto, obtendremos un gran foco de publicidad y atención, mientras que ellos contarán con una aplicación que les facilite la organización de actividades.
+Finalmente, tras haber establecido nuestra presencia en la ciudad y redes sociales locales, en caso de que la aplicación obtenga un alcance suficiente como para ser considerada una “app oficial de Zaragoza”, planeamos contactar y colaborar con el propio 
+ayuntamiento
+ para lograr un mayor control, seguridad y fiabilidad de los eventos y la app. Así lograremos una presencia total de la aplicación, habremos alcanzado nuestro público prácticamente en su totalidad o incluso más y tendremos más posibilidades de 
+escalabilidad
+ y expansión de cara a futuro.
+8.3. DISTRIBUCIÓN
+La aplicación se 
+distribuirá 
+y encontrará principalmente disponible para los usuarios en la 
+PlayStore 
+para android, 
+AppStore 
+para iOS y con planes futuros en la 
+Microsoft Store
+ para el ecosistema de Windows. Aun así, no solo nos centraremos en estas 3 plataformas de descargas, si no que también la distribuiremos a través de la 
+página web oficial
+ de la propia aplicación disponible para cualquier navegador y dispositivo con acceso a internet.
+Por otro lado, otra forma en la que daremos a conocer la app al resto de personas y la distribuiremos será a través de los planes de marketing como 
+a
+nuncios patrocinados
+ y 
+alianzas 
+con otras empresas, entidades,  
+influencers… 
+y a través de un 
+sistema de referidos
+, con el que la transmisión persona a persona de la aplicación podrá aumentar exponencialmente y de forma exitosa debido a un sistema propio por el cual se podrán conseguir recompensas por invitar a usuarios y que estos sean activos.
+8.4. PRECIO
+Cuando llegó la hora de hablar de precios y encontrar la fuente principal de ingresos de la aplicación, surgieron bastantes ideas, pero entre todas ellas, optamos por elegir el 
+sistema de 
+suscripción mensual
+ a diferentes planes. Estos planes de suscripción otorgan a los usuarios ciertas 
+“ventajas” o beneficios
+ 
+que les permiten desde poder utilizar funciones y funcionalidades extras de la propia aplicación, hasta 
+descuentos
+ 
+en el precio de 
+tickets
+, 
+entradas
+, 
+pases… 
+necesarios para ciertos tipos de eventos y/o actividades como puede ser una quedada para ir a ver una película al cine, o una actividad que tenga un costo predefinido.
+El precio de esta suscripción será de
+ 
+2,99€ al mes
+, 
+siendo un precio justo, muy competitivo, y 
+asequible para el público objetivo
+ de la aplicación (justificado en 
+apartados posteriores
+), que se trata principalmente de gente más jóven que puede no disponer de tantos recursos económicos. También habrá varios planes, como el
+ 
+trimestral o anual
+, de forma que recompensaremos la fidelidad a través de una reducción de precio en la suscripción.
+Otra posible fuente de ingresos, será la 
+venta de cosméticos
+ 
+dentro de la propia aplicación. Estos no otorgarán ningún tipo de ventaja, sino que serán meramente estéticos dentro de la aplicación, de forma que las personas que los adquieran podrán diferenciarse de los demás usuarios. Este sistema está principalmente pensado como una forma de 
+agradecimiento por 
+donaciones 
+ya que al no ofrecer una ventaja sobre los demás usuarios, querrá decir que esa persona está apoyándonos simplemente por el hecho de que le gusta la plataforma.
+Por otra parte, también vamos a disponer de un 
+sistema de actividad y recompensas
+, haciendo que a los usuarios más activos y en función de la participación en eventos, reseñas positivas de eventos creados o eventos participados, y otra serie de factores, se les otorgarán
+ 
+puntos internos
+ en la app que podrán ser canjeados por descuentos en entradas individuales, descuentos en las suscripciones o desbloqueo de los 
+cosméticos premium
+, de forma que puedan demostrar que aunque no puedan apoyar económicamente a la plataforma, la apoyan siendo usuarios fieles y activos dentro de la misma.
+9. PRESUPUESTO
+9.1. MANO DE OBRA
+En esta tabla exponemos el presupuesto total de la mano de obra necesaria para llevar a cabo nuestro proyecto.
+Mano de obra de desarrollo
+Investigación y análisis
+Tiempo de trabajo [horas]
+€/h
+Total [€]
+Desarrollo de la idea
+30
+11,21 €
+336,30 €
+Análisis de mercado
+15
+7,83 €
+117,45 €
+Documentación
+36
+11,21 €
+403,56 €
+Total
+857,31 €
+Desarrollo de la idea
+Tiempo de trabajo [horas]
+€/h
+Total [€]
+Programación y desarrollo de la idea
+576
+11,21 €
+587,21 €
+Formación necesaria
+363
+11,21 €
+374,21 €
+Diseño visual y logo
+15
+11,21 €
+26,21 €
+Total
+987,63 €
+Puesta en marcha
+Tiempo de trabajo [horas]
+€/h
+Total [€]
+Servicio AWS
+720
+0,85 €
+612,00 €
+Total
+612,00 €
+Marketing
+Costo Unitario
+Cantidad
+Total [€]
+Publicidad en redes sociales
+117,44 €
+1
+118,44 €
+Impresiones digitales de los carteles
+20,10 €
+3
+60,30 €
+Total
+178,74 €
+Coste total de investigación y análisis
+2.635,68 €
+El presupuesto total quedaría en 
+2.653,68€
+.
+9.2. EQUIPOS
+En esta tabla exponemos el presupuesto total de los materiales que son necesarios para cumplir con nuestro proyecto.
+Presupuesto de material
+Equipo material
+Costo Unitario
+Cantidad
+Costo Total
+Alquiler de espacio de oficina
+539,00 €
+1
+539,00 €
+Servicios de internet y utilidades
+39,95 €
+1
+39,95 €
+Servidores y hardware para hosting
+3.307,65 €
+1
+3.307,65 €
+Compra de equipos de computación
+1.264,63 €
+3
+3.793,89 €
+Total
+7.680,49 €
+Equipo inmaterial
+Software de diseño y desarrollo
+969,30 €
+3
+2.907,90 €
+Propiedad intelectual y patentes (colores y marca)
+245,00 €
+1
+245,00 €
+Licencias de software necesario
+154,97 €
+3
+464,91 €
+Total
+3.617,81 €
+Coste total de equipo
+11.298,30 €
+El coste total resulta en 
+11.298,30€
+.
+9.3. GASTOS GENERALES
+En esta tabla exponemos el presupuesto total de gastos generales.
+Presupuesto de Gastos Generales
+Costo Unitario
+Cantidad
+Total
+Soporte técnico (Bots e IA/Custom GPT)
+25,00 €
+1
+25,00 €
+Mantenimiento de la aplicación
+189,00 €
+1
+189,00 €
+Total Gastos Generales
+214,00 €
+El presupuesto total quedaría en 
+214,00€
+.
+9.4. RESUMEN Y PRESUPUESTO TOTAL
+En esta tabla exponemos el presupuesto total para poder llevar a cabo el proyecto.
+Presupuesto total
+Precio
+Materiales
+11.298,30 €
+Mano de obra
+2.635,68 €
+Gastos generales
+214,00 €
+TOTAL
+14.147,98 €
+El presupuesto total quedaría en 
+14.147,98€
+.
+9.5. PRESUPUESTO DEL PRODUCTO FINAL
+A pesar de que este es un proyecto de pasión por la ciudad en la que vivimos, su gente y los que están por llegar, la aplicación debe generar un beneficio suficiente como para, como mínimo, cubrir la
+ inversión inicial
+ y
+ gastos de mantenimiento
+ (servidores, dominio, entornos de desarrollo, publicidad, ….).
+Podríamos tomar como ejemplo “
+Click and Plan
+”, la cual es de entre todas las competidoras, la más similar a nuestro proyecto, tratando de obtener así una previsión realista del desarrollo económico que podría tener nuestra app. El último registro oficial del número de usuarios activos en esta app es de 2020, contando con un aproximado de 
+20.000 usuarios activos
+ según la descripción de la empresa mostrada en LinkedIn. A pesar de contar con esta cifra, es muy probable que diste mucho de la actual. Además, la aplicación genera beneficios en base al número de asistentes a las actividades de pago publicadas y no cuenta con ningún plan de pago para los usuarios, por lo que resulta complicado e impreciso evaluar los beneficios de esta empresa. Es por esto que nos hemos basado en estadísticas y previsiones propias para establecer el precio y desarrollo económico de nuestra app.
+A fecha de realizado este documento y según el Instituto Nacional de Estadística, en Zaragoza residen un total de 
+111.406 personas
+ cuyo rango de edad se encuentra entre los 16 y los 30 años, siendo este nuestro público objetivo.
+Teniendo en cuenta la positividad con la que fue recibida nuestra idea tanto en las entrevistas como en las encuestas, podemos prever que, contando con las respuestas a la par de ser realistas, un aproximado del 
+25%
+ de nuestro público objetivo hará uso de nuestra app. Equivaliendo así a unos 
+27.800 usuarios activos
+ en la aplicación una vez alcanzada su estabilidad.
+Si conseguimos la fidelidad de nuestros usuarios y su satisfacción, calculamos que un 
+15%
+ de estos se animarán a actualizar sus cuentas con el plan de pago (2.99€), es decir, unos 
+4.050 usuarios “premium”
+. De esta forma, obtendremos un  beneficio aproximado de 
+12.109€ mensuales
+ en un punto estable.
+Sobra mencionar que esto son previsiones que pueden no reflejar los resultados reales, pero observando las estadísticas, podemos concluir que, con el precio opcional establecido, no será complicado 
+recuperar la inversión
+ ni 
+cubrir los gastos
+ de mantenimiento.
+10. CONCLUSIONES
+Tras haber desarrollado en profundidad nuestra idea y haber analizado detenidamente todas las posibilidades, estadísticas y estrategias a seguir, hemos alcanzado una 
+visión sólida y factible
+ para la aplicación que queremos desarrollar.
+Pretendemos cubrir una de las necesidades más primarias y demandadas por el ser humano, la 
+socialización 
+y el 
+miedo a la soledad
+. Este es un problema que aumentó especialmente tras la pandemia de 2020, aunque no necesariamente todo el 
+mundo que lo
+ sufra sea debido a este evento. También es el caso de gente que se tiene que mudar por motivos de trabajo o estudio a otras ciudades en las que no conocen a nadie, siendo difícil encontrar un nuevo círculo social en el que sentirse acogido.
+Es por esto que surgió MyEventz, una aplicación con la que 
+gestionar y organizar actividades
+, fiestas y eventos de cualquier tipo con el objetivo de ayudar a la gente de Zaragoza a encontrar otras personas con sus mismos gustos e intereses, agilizando enormemente el proceso de socialización.
+Uno de nuestros puntos fuertes es que, debido a nuestro 
+enfoque local
+ en la ciudad de Zaragoza y sus alrededores, será mucho más fácil 
+publicitarla
+ y darla a conocer que si 
+abarcáramos
+ un público mucho más amplio. Esto será especialmente efectivo si logramos establecer alianzas con diferentes 
+medios de difusión y redes sociales
+ como pueden ser SoydeZaragoza y Zinderizar.
+A pesar de ser este un proyecto de amor y pasión por nuestra ciudad, hemos logrado establecer un precio opcional, estrategia y previsión con los que podremos recuperar la inversión inicial, mantener sin dificultad la aplicación e incluso resultar bastante
+ rentable económicamente
+ a medio y largo plazo.
+11. WEBGRAFÍA
+Preguntas y ayuda general sobre programación relacionada con la aplicación y proyecto. [27-2-2024]
+https://discord.gg/programacion
+Ayuda general, generación de texto, ideas, y refactorización de frases [29-2-2024]
+https://chat.openai.com
+https://gemini.google.com
+Datos y cifras relacionadas con las tabas [24-2-2024]
+https://www.boe.es/boe/dias/2023/07/26/pdfs/BOE-A-2023-17238.pdf
+Estudio sobre los daños y aumento en la soledad debido al Covid19 [28-2-2024]
+https://www.infobae.com/america/tendencias-america/2022/05/12/efectos-colaterales-del-covid-la-pandemia-aumento-la-soledad-en-todo-el-mundo/
+Estudio sobre el aumento en la soledad en personas mayores debido al Covid19  [21-2-2024]
+https://revistasanitariadeinvestigacion.com/consecuencias-de-la-soledad-en-las-personas-mayores-por-el-covid-19/
+Datos sobre la empresa Click and Plan [24-05-2024]
+https://www.linkedin.com/company/click-and-plan/?
+originalSubdomain
+=es
+Cuenta en redes sociales y web de SoydeZaragoza [27-05-2024]
+https://www.soydezaragoza.es/
+https://www.instagram.com/soydezaragoza/?hl=es
+Cuenta en redes sociales y web de 
+Zinderizar
+ [28-05-2024]
+https://www.zinderizar.es/
+https://www.instagram.com/zinderizar/?hl=es
+
