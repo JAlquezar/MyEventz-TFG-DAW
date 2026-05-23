@@ -7,7 +7,7 @@ import './Login.css';
 
 export default function EventDetail() {
   const { id } = useParams();
-  const { user } = useAuth();
+  const { user, refreshUser } = useAuth();
   const [evento, setEvento] = useState(null);
   const [loading, setLoading] = useState(true);
   const [actionLoading, setActionLoading] = useState(false);
@@ -21,12 +21,14 @@ export default function EventDetail() {
 
   useEffect(() => { fetchEvent(); }, [id]);
 
+  const isOrganizer = evento?.organizadorId === user?.uid;
   const isParticipating = evento?.participantes?.some(p => p.usuarioId === user?.uid);
 
   const handleParticipate = async () => {
     setActionLoading(true);
     try {
       await participar(id);
+      await refreshUser();
       fetchEvent();
     } catch (err) {
       alert(err.response?.data || 'Error al participar');
@@ -39,6 +41,7 @@ export default function EventDetail() {
     setActionLoading(true);
     try {
       await cancelarParticipacion(id);
+      await refreshUser();
       fetchEvent();
     } catch (err) {
       alert(err.response?.data || 'Error al cancelar');
@@ -106,7 +109,7 @@ export default function EventDetail() {
         <h3 className="section__title">Participantes ({evento.participantes?.length || 0})</h3>
         {evento.participantes?.map(p => (
           <Link key={p.usuarioId} to={`/profile/${p.usuario?.username}`} className="event-detail__participant event-detail__participant--link">
-            <img src={`https://i.pravatar.cc/150?u=${p.usuarioId}`} alt={p.usuario?.nombreCompleto} />
+            <img src={p.usuario?.fotoPerfil || `https://i.pravatar.cc/150?u=${p.usuarioId}`} alt={p.usuario?.nombreCompleto} />
             <div>
               <div style={{ fontWeight: 600 }}>{p.usuario?.nombreCompleto || 'Usuario'}</div>
               <div style={{ fontSize: '0.85rem', color: 'var(--text-tertiary)' }}>@{p.usuario?.username || '—'}</div>
@@ -117,7 +120,11 @@ export default function EventDetail() {
 
       {/* Action */}
       <div className="event-detail__actions">
-        {!isParticipating ? (
+        {isOrganizer ? (
+          <button className="btn btn--outline btn--full" disabled style={{ opacity: 0.6, cursor: 'not-allowed' }}>
+            ORGANIZAS ESTE EVENTO
+          </button>
+        ) : !isParticipating ? (
           <button className="btn btn--primary btn--full" onClick={handleParticipate} disabled={actionLoading}>
             {actionLoading ? 'Procesando...' : 'PARTICIPAR'}
           </button>

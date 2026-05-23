@@ -7,7 +7,7 @@ export default function Sidebar() {
 
   const displayName = dbUser?.nombreCompleto || user?.displayName || 'Usuario';
   const username = dbUser?.username || user?.email?.split('@')[0] || '—';
-  const avatarUrl = user?.photoURL || `https://i.pravatar.cc/150?u=${user?.uid}`;
+  const avatarUrl = dbUser?.fotoPerfil || user?.photoURL || `https://i.pravatar.cc/150?u=${user?.uid}`;
 
   return (
     <aside className="sidebar">

@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createEvent, getCategories } from '../services/api';
+import { useAuth } from '../contexts/AuthContext';
 import { getApiErrorMessage } from '../services/errorUtils';
 import './Pages.css';
 import './Login.css';
 
 export default function CreateEvent() {
   const navigate = useNavigate();
+  const { refreshUser } = useAuth();
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -52,6 +54,7 @@ export default function CreateEvent() {
         numMaxParticipantes: formData.limit ? parseInt(formData.limit) : null,
         categoriaIds: formData.categoryIds,   // ← matches CreateEventoDto
       });
+      await refreshUser();
       navigate('/');
     } catch (err) {
       setError('Error al crear el evento: ' + getApiErrorMessage(err));

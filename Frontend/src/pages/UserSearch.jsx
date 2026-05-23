@@ -47,7 +47,7 @@ export default function UserSearch() {
         <div className="user-list">
           {users.map(user => (
             <Link key={user.id} to={`/profile/${user.username}`} className="user-item">
-              <img src={`https://i.pravatar.cc/150?u=${user.id}`} alt={user.nombreCompleto} className="user-item__avatar" />
+              <img src={user.fotoPerfil || `https://i.pravatar.cc/150?u=${user.id}`} alt={user.nombreCompleto} className="user-item__avatar" />
               <div>
                 <div className="user-item__name">{user.nombreCompleto}</div>
                 <div className="user-item__handle">@{user.username}</div>

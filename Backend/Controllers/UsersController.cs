@@ -32,6 +32,7 @@ namespace MyEventz.API.Controllers
                     u.NombreCompleto,
                     u.Username,
                     u.Email,
+                    u.FotoPerfil,
                     Hobbies = u.Hobbies.Select(h => new { Categoria = new { h.Categoria.Id, h.Categoria.Nombre } }).ToList()
                 })
                 .ToListAsync();
@@ -57,6 +58,7 @@ namespace MyEventz.API.Controllers
                     u.NombreCompleto,
                     u.Username,
                     u.Email,
+                    u.FotoPerfil,
                     Hobbies = u.Hobbies.Select(h => new { Categoria = new { h.Categoria.Id, h.Categoria.Nombre } }).ToList()
                 })
                 .ToListAsync();
@@ -83,6 +85,7 @@ namespace MyEventz.API.Controllers
                     u.X,
                     u.YouTube,
                     u.TikTok,
+                    u.FotoPerfil,
                     u.CreatedAt,
                     Hobbies = u.Hobbies.Select(h => new { Categoria = new { h.Categoria.Id, h.Categoria.Nombre } }).ToList(),
                     EventosOrganizados = u.EventosOrganizados.Select(e => new
@@ -125,6 +128,7 @@ namespace MyEventz.API.Controllers
                     u.X,
                     u.YouTube,
                     u.TikTok,
+                    u.FotoPerfil,
                     u.CreatedAt,
                     Hobbies = u.Hobbies.Select(h => new { Categoria = new { h.Categoria.Id, h.Categoria.Nombre } }).ToList(),
                     EventosOrganizados = u.EventosOrganizados.Select(e => new

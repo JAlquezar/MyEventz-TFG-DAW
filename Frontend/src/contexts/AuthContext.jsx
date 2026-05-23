@@ -42,20 +42,23 @@ export function AuthProvider({ children }) {
 
     // Register in backend if not exists (idempotent)
     try {
-      const backendUser = await createUser({
+      await createUser({
         id: firebaseUser.uid,
         nombreCompleto: firebaseUser.displayName || 'Usuario',
         username: firebaseUser.email.split('@')[0],
         email: firebaseUser.email,
       });
-      setDbUser(backendUser);
     } catch (err) {
       console.error('Error registering user in backend:', err);
-      // Try to fetch existing user
-      try {
-        const existing = await getUser(firebaseUser.uid);
-        setDbUser(existing);
-      } catch { /* ignore */ }
+    }
+
+    // Always fetch the full user profile to ensure dbUser has the complete structure
+    try {
+      const fullUser = await getUser(firebaseUser.uid);
+      setDbUser(fullUser);
+    } catch (err) {
+      console.error('Error fetching full user profile after Google login:', err);
+      setDbUser(null);
     }
 
     return firebaseUser;

@@ -40,7 +40,7 @@ export default function Profile() {
       return (
         <div className="page-wrapper">
           <div className="profile-header">
-            <img src={firebaseUser.photoURL || `https://i.pravatar.cc/150?u=${firebaseUser.uid}`} alt="Avatar" className="profile-header__avatar" />
+            <img src={dbUser?.fotoPerfil || firebaseUser.photoURL || `https://i.pravatar.cc/150?u=${firebaseUser.uid}`} alt="Avatar" className="profile-header__avatar" />
             <div className="profile-header__info">
               <h1 className="profile-header__name">{firebaseUser.displayName || 'Usuario'}</h1>
               <p className="profile-header__handle">{firebaseUser.email}</p>
@@ -64,7 +64,7 @@ export default function Profile() {
   return (
     <div className="page-wrapper">
       <div className="profile-header">
-        <img src={isMyProfile && firebaseUser?.photoURL ? firebaseUser.photoURL : `https://i.pravatar.cc/150?u=${profileUser.id}`} alt={profileUser.nombreCompleto} className="profile-header__avatar" />
+        <img src={profileUser.fotoPerfil || (isMyProfile ? firebaseUser?.photoURL : null) || `https://i.pravatar.cc/150?u=${profileUser.id}`} alt={profileUser.nombreCompleto} className="profile-header__avatar" />
         <div className="profile-header__info">
           <h1 className="profile-header__name">{profileUser.nombreCompleto}</h1>
           <p className="profile-header__handle">@{profileUser.username}</p>

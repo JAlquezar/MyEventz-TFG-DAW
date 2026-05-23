@@ -40,7 +40,7 @@ namespace MyEventz.API.Controllers
                     e.CreatedAt,
                     Participantes = e.Participantes.Select(p => new { p.UsuarioId }).ToList(),
                     Categorias = e.Categorias.Select(c => new { Categoria = new { c.Categoria.Id, c.Categoria.Nombre } }).ToList(),
-                    Organizador = new { e.Organizador.Id, e.Organizador.NombreCompleto, e.Organizador.Username }
+                    Organizador = new { e.Organizador.Id, e.Organizador.NombreCompleto, e.Organizador.Username, e.Organizador.FotoPerfil }
                 }).ToListAsync();
 
             return Ok(result);
@@ -66,11 +66,11 @@ namespace MyEventz.API.Controllers
                     e.OrganizadorId,
                     e.CreatedAt,
                     Categorias = e.Categorias.Select(c => new { Categoria = new { c.Categoria.Id, c.Categoria.Nombre } }).ToList(),
-                    Organizador = new { e.Organizador.Id, e.Organizador.NombreCompleto, e.Organizador.Username },
+                    Organizador = new { e.Organizador.Id, e.Organizador.NombreCompleto, e.Organizador.Username, e.Organizador.FotoPerfil },
                     Participantes = e.Participantes.Select(p => new
                     {
                         p.UsuarioId,
-                        Usuario = new { p.Usuario.Id, p.Usuario.NombreCompleto, p.Usuario.Username }
+                        Usuario = new { p.Usuario.Id, p.Usuario.NombreCompleto, p.Usuario.Username, p.Usuario.FotoPerfil }
                     }).ToList()
                 })
                 .FirstOrDefaultAsync();
@@ -107,6 +107,13 @@ namespace MyEventz.API.Controllers
 
             _context.Eventos.Add(evento);
             await _context.SaveChangesAsync(); // Get the generated ID
+
+            // Automatically add organizer as participant
+            _context.ParticipantesEventos.Add(new ParticipanteEvento
+            {
+                EventoId = evento.Id,
+                UsuarioId = firebaseUid
+            });
 
             // Now add category relationships
             foreach (var catId in dto.CategoriaIds)
@@ -155,6 +162,11 @@ namespace MyEventz.API.Controllers
         {
             var firebaseUid = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             if (string.IsNullOrEmpty(firebaseUid)) return Unauthorized();
+
+            var evento = await _context.Eventos.FindAsync(id);
+            if (evento == null) return NotFound("Evento no encontrado.");
+            if (evento.OrganizadorId == firebaseUid)
+                return BadRequest("El organizador no puede abandonar su propio evento.");
 
             var participacion = await _context.ParticipantesEventos
                 .FirstOrDefaultAsync(p => p.EventoId == id && p.UsuarioId == firebaseUid);

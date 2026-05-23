@@ -4,7 +4,8 @@ import { useAuth } from '../contexts/AuthContext';
 import { createUser, updateUser, getCategories } from '../services/api';
 import { getApiErrorMessage } from '../services/errorUtils';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../firebaseConfig';
+import { auth, storage } from '../firebaseConfig';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import './Login.css';
 
 export default function Register() {
@@ -14,10 +15,12 @@ export default function Register() {
   const [categories, setCategories] = useState([]);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [uploadingImage, setUploadingImage] = useState(false);
   const [firebaseUser, setFirebaseUser] = useState(null);
   const [formData, setFormData] = useState({
     username: '', dob: '', email: '', password: '',
     firstName: '', lastName1: '', lastName2: '', bio: '',
+    fotoPerfil: '',
     selectedCategories: []
   });
 
@@ -35,6 +38,25 @@ export default function Register() {
       const has = prev.selectedCategories.includes(catId);
       return { ...prev, selectedCategories: has ? prev.selectedCategories.filter(c => c !== catId) : [...prev.selectedCategories, catId] };
     });
+  };
+
+  const handleImageUpload = async (e) => {
+    const file = e.target.files[0];
+    if (!file || !firebaseUser) return;
+    
+    setUploadingImage(true);
+    setError('');
+    try {
+      const fileRef = ref(storage, `avatars/${firebaseUser.uid}`);
+      await uploadBytes(fileRef, file);
+      const url = await getDownloadURL(fileRef);
+      setFormData(prev => ({ ...prev, fotoPerfil: url }));
+    } catch (err) {
+      setError('Error al subir la imagen. Comprueba las reglas de Firebase Storage.');
+      console.error(err);
+    } finally {
+      setUploadingImage(false);
+    }
   };
 
   // Step 1: Create Firebase auth user
@@ -91,6 +113,7 @@ export default function Register() {
         username: formData.username,
         biografia: formData.bio || null,
         fechaNacimiento: formData.dob || null,
+        fotoPerfil: formData.fotoPerfil || null,
         hobbyIds: formData.selectedCategories,
       });
 
@@ -173,6 +196,25 @@ export default function Register() {
           {step === 2 && (
             <>
               <p className="register-card__subtitle">Completa tu perfil.</p>
+              
+              <div className="edit-profile__avatar-section" style={{ margin: '0 auto 20px' }}>
+                <img 
+                  src={formData.fotoPerfil || `https://i.pravatar.cc/150?u=${firebaseUser?.uid}`} 
+                  alt="Avatar preview" 
+                  className="edit-profile__avatar" 
+                />
+                <label className="edit-profile__change-photo">
+                  {uploadingImage ? 'Subiendo...' : 'Añadir foto'}
+                  <input 
+                    type="file" 
+                    accept="image/*" 
+                    style={{ display: 'none' }} 
+                    onChange={handleImageUpload} 
+                    disabled={uploadingImage}
+                  />
+                </label>
+              </div>
+
               <div className="form-group">
                 <label className="form-label">Nombre de usuario</label>
                 <input className="form-input" name="username" value={formData.username} onChange={handleChange} required />
