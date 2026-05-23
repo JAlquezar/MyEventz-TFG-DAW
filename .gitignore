@@ -175,3 +175,9 @@ ui-debug.log
 # Local volumes or temp docker data (not including docker-compose)
 .docker/
 docker-compose.override.yml
+
+# ------------------------------------------
+# 7. Documentation
+# ------------------------------------------
+Documentación - MyEventz.docx
+extracted_doc.txt
