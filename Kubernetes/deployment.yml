@@ -34,7 +34,7 @@ spec:
     spec:
       containers:
       - name: myeventz-web
-        image: jalquezar/myeventz-frontend:latest
+        image: gigantosaurio/myeventz-frontend:latest
         ports:
         - containerPort: 80
 ---
@@ -74,7 +74,7 @@ spec:
     spec:
       containers:
       - name: myeventz-api
-        image: jalquezar/myeventz-backend:latest
+        image: gigantosaurio/myeventz-backend:latest
         ports:
         - containerPort: 8080
         env:
