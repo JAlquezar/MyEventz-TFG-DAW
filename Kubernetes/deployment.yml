@@ -1,0 +1,86 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: myeventz-web-svc
+  labels:
+    app: myeventz-web
+spec:
+  ports:
+    - port: 80
+      targetPort: 80
+  selector:
+    app: myeventz-web
+    tier: frontend
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myeventz-web-deploy
+  labels:
+    app: myeventz-web
+spec:
+  selector:
+    matchLabels:
+      app: myeventz-web
+      tier: frontend
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: myeventz-web
+        tier: frontend
+    spec:
+      containers:
+      - name: myeventz-web
+        image: jalquezar/myeventz-frontend:latest
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+  labels:
+    app: myeventz-api
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: myeventz-api
+    tier: backend
+  type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myeventz-api-deploy
+  labels:
+    app: myeventz-api
+spec:
+  selector:
+    matchLabels:
+      app: myeventz-api
+      tier: backend
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: myeventz-api
+        tier: backend
+    spec:
+      containers:
+      - name: myeventz-api
+        image: jalquezar/myeventz-backend:latest
+        ports:
+        - containerPort: 8080
+        env:
+        - name: ConnectionStrings__DefaultConnection
+          value: "Server=your-rds-mysql.xxxxx.rds.amazonaws.com;Database=myeventz_db;User=admin;Password=admin123;CharSet=utf8mb4;"
+        - name: Firebase__ProjectId
+          value: "myeventzaragoza"
+        - name: ASPNETCORE_ENVIRONMENT
+          value: "Production"
