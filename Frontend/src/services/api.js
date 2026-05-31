@@ -1,8 +1,11 @@
 import axios from 'axios';
 import { auth } from '../firebaseConfig';
 
-// In Docker: frontend on :80, backend on :5000
-const API_BASE = 'http://localhost:5000/api';
+// In Docker development: frontend on :5173, backend on :5000
+// In Production/Docker deployment: relative path /api (via nginx reverse proxy)
+const API_BASE = window.location.port === '5173' 
+  ? 'http://localhost:5000/api' 
+  : '/api';
 
 const api = axios.create({
   baseURL: API_BASE,

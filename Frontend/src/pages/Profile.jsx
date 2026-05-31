@@ -71,7 +71,7 @@ export default function Profile() {
           {isMyProfile && (
             <div className="profile-header__actions">
               <Link to="/edit-profile" className="btn btn--outline btn--sm">
-                <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7" /><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z" /></svg>
                 Editar perfil
               </Link>
               <button className="btn btn--danger btn--sm" onClick={logout}>Cerrar sesión</button>
@@ -114,7 +114,7 @@ export default function Profile() {
             {participations.map(e => (
               <EventCard key={e.id} id={e.id} title={e.titulo}
                 date={new Date(e.fechaRealizacion).toLocaleDateString('es-ES')}
-                attendees={0}
+                attendees={e.participantes?.length || 0}
                 image={`https://picsum.photos/seed/event${e.id}/500/300`} compact />
             ))}
           </div>

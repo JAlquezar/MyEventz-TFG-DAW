@@ -99,7 +99,8 @@ namespace MyEventz.API.Controllers
                         Evento = new
                         {
                             p.Evento.Id, p.Evento.Titulo, p.Evento.FechaRealizacion, p.Evento.Ubicacion,
-                            Categorias = p.Evento.Categorias.Select(c => new { Categoria = new { c.Categoria.Id, c.Categoria.Nombre } }).ToList()
+                            Categorias = p.Evento.Categorias.Select(c => new { Categoria = new { c.Categoria.Id, c.Categoria.Nombre } }).ToList(),
+                            Participantes = p.Evento.Participantes.Select(ep => new { ep.UsuarioId }).ToList()
                         }
                     }).ToList()
                 })
@@ -142,7 +143,8 @@ namespace MyEventz.API.Controllers
                         Evento = new
                         {
                             p.Evento.Id, p.Evento.Titulo, p.Evento.FechaRealizacion, p.Evento.Ubicacion,
-                            Categorias = p.Evento.Categorias.Select(c => new { Categoria = new { c.Categoria.Id, c.Categoria.Nombre } }).ToList()
+                            Categorias = p.Evento.Categorias.Select(c => new { Categoria = new { c.Categoria.Id, c.Categoria.Nombre } }).ToList(),
+                            Participantes = p.Evento.Participantes.Select(ep => new { ep.UsuarioId }).ToList()
                         }
                     }).ToList()
                 })

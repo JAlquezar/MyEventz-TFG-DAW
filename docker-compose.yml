@@ -1,20 +1,4 @@
 services:
-  db:
-    image: mysql:8.0
-    container_name: myeventz_db
-    restart: always
-    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
-    environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: myeventz_db
-      MYSQL_USER: myeventz_user
-      MYSQL_PASSWORD: myeventz_password
-    ports:
-      - "3306:3306"
-    volumes:
-      - db_data:/var/lib/mysql
-      - ./Database/init.sql:/docker-entrypoint-initdb.d/init.sql
-
   backend:
     build:
       context: ./Backend
@@ -23,11 +7,10 @@ services:
     ports:
       - "5000:8080"
     environment:
-      - ConnectionStrings__DefaultConnection=Server=db;Database=myeventz_db;User=myeventz_user;Password=myeventz_password;CharSet=utf8mb4;
-      - Firebase__ProjectId=myeventzaragoza
-      - ASPNETCORE_ENVIRONMENT=Development
-    depends_on:
-      - db
+      - ConnectionStrings__DefaultConnection=Server=${DB_HOST};Database=${DB_NAME};User=${DB_USER};Password=${DB_PASSWORD};CharSet=utf8mb4;
+      - Firebase__ProjectId=${FIREBASE_PROJECT_ID:-myeventzaragoza}
+      - ASPNETCORE_ENVIRONMENT=Production
+    restart: always
 
   frontend:
     build:
@@ -38,6 +21,4 @@ services:
       - "80:80"
     depends_on:
       - backend
-
-volumes:
-  db_data:
+    restart: always
