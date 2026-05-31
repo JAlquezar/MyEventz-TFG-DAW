@@ -1,8 +1,6 @@
 services:
   backend:
-    build:
-      context: ./Backend
-      dockerfile: Dockerfile
+    image: gigantosaurio/myeventz-backend:latest
     container_name: myeventz_backend
     ports:
       - "5000:8080"
@@ -13,9 +11,7 @@ services:
     restart: always
 
   frontend:
-    build:
-      context: ./Frontend
-      dockerfile: Dockerfile
+    image: gigantosaurio/myeventz-frontend:latest
     container_name: myeventz_frontend
     ports:
       - "80:80"
