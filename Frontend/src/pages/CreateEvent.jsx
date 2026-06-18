@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { createEvent, getCategories } from '../services/api';
+import { createEvent, getCategories, uploadFile } from '../services/api';
 import { useAuth } from '../contexts/AuthContext';
 import { getApiErrorMessage } from '../services/errorUtils';
 import './Pages.css';
@@ -8,14 +8,15 @@ import './Login.css';
 
 export default function CreateEvent() {
   const navigate = useNavigate();
-  const { refreshUser } = useAuth();
+  const { user, refreshUser } = useAuth();
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [uploadingImage, setUploadingImage] = useState(false);
   const [formData, setFormData] = useState({
     title: '', date: '', timeH: '', timeM: '',
     description: '', ageMin: '', ageMax: '', ubicacion: '',
-    limit: '', categoryIds: []
+    limit: '', categoryIds: [], imagenUrl: ''
   });
 
   useEffect(() => {
@@ -32,6 +33,23 @@ export default function CreateEvent() {
       const has = prev.categoryIds.includes(catId);
       return { ...prev, categoryIds: has ? prev.categoryIds.filter(c => c !== catId) : [...prev.categoryIds, catId] };
     });
+  };
+
+  const handleImageUpload = async (e) => {
+    const file = e.target.files[0];
+    if (!file || !user) return;
+
+    setUploadingImage(true);
+    setError('');
+    try {
+      const url = await uploadFile(file);
+      setFormData(prev => ({ ...prev, imagenUrl: url }));
+    } catch (err) {
+      setError('Error al subir la imagen del evento. Revisa la configuración del servidor y Cloudinary.');
+      console.error(err);
+    } finally {
+      setUploadingImage(false);
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -53,6 +71,7 @@ export default function CreateEvent() {
         ubicacion: formData.ubicacion || 'Zaragoza',
         numMaxParticipantes: formData.limit ? parseInt(formData.limit) : null,
         categoriaIds: formData.categoryIds,   // ← matches CreateEventoDto
+        imagenUrl: formData.imagenUrl || null
       });
       await refreshUser();
       navigate('/');
@@ -73,6 +92,33 @@ export default function CreateEvent() {
         {error && <div className="login-card__error">{error}</div>}
 
         <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label className="form-label">Imagen de portada</label>
+            <div className="event-image-upload__container">
+              <div className="event-image-upload__preview-wrapper">
+                {formData.imagenUrl ? (
+                  <img src={formData.imagenUrl} alt="Preview" className="event-image-upload__preview" />
+                ) : (
+                  <div className="event-image-upload__placeholder">
+                    <i className="fa-regular fa-image"></i>
+                    <div>Elige una imagen premium para tu evento</div>
+                  </div>
+                )}
+              </div>
+              <label className={`event-image-upload__label ${uploadingImage ? 'event-image-upload__label--disabled' : ''}`}>
+                <i className="fa-solid fa-cloud-arrow-up"></i>
+                {uploadingImage ? 'Subiendo imagen...' : formData.imagenUrl ? 'Cambiar imagen' : 'Subir imagen'}
+                <input 
+                  type="file" 
+                  accept="image/*" 
+                  style={{ display: 'none' }} 
+                  onChange={handleImageUpload} 
+                  disabled={uploadingImage}
+                />
+              </label>
+            </div>
+          </div>
+
           <div className="form-group">
             <label className="form-label">Título del evento</label>
             <input className="form-input" name="title" value={formData.title} onChange={handleChange} placeholder="Nombre del evento..." required />

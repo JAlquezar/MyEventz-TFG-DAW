@@ -3,7 +3,7 @@ import { auth } from '../firebaseConfig';
 
 // In Docker development: frontend on :5173, backend on :5000
 // In Production/Docker deployment: relative path /api (via nginx reverse proxy)
-const API_BASE = window.location.port === '5173' 
+const API_BASE = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
   ? 'http://localhost:5000/api' 
   : '/api';
 
@@ -71,5 +71,41 @@ export const updateUser = (id, data) =>
 // ─── Categories ────────────────────────────────────────────────────────
 export const getCategories = () =>
   api.get('/categories').then(r => r.data);
+
+// ─── Event Management & Code Verification ───────────────────────────────
+export const updateEvent = (id, data) =>
+  api.put(`/events/${id}`, data).then(r => r.data);
+
+export const validateAttendanceCode = (id, code) =>
+  api.post(`/events/${id}/validate-code`, { code }).then(r => r.data);
+
+export const getEventManagement = (id) =>
+  api.get(`/events/${id}/management`).then(r => r.data);
+
+export const updateParticipantAttendance = (id, usuarioId, asistio) =>
+  api.put(`/events/${id}/attendance`, { usuarioId, asistio }).then(r => r.data);
+
+// ─── Announcements (Avisos) ─────────────────────────────────────────────
+export const postAnnouncement = (id, title, content) =>
+  api.post(`/events/${id}/announcements`, { titulo: title, contenido: content }).then(r => r.data);
+
+export const getEventAnnouncements = (id) =>
+  api.get(`/events/${id}/announcements`).then(r => r.data);
+
+export const getUserAnnouncements = () =>
+  api.get(`/users/my-announcements`).then(r => r.data);
+
+// ─── Support (Soporte) ──────────────────────────────────────────────────
+export const submitSupportTicket = (data) =>
+  api.post('/support', data).then(r => r.data);
+
+// ─── Upload (Subida) ────────────────────────────────────────────────────
+export const uploadFile = (file) => {
+  const formData = new FormData();
+  formData.append('file', file);
+  return api.post('/upload', formData, {
+    headers: { 'Content-Type': 'multipart/form-data' }
+  }).then(r => r.data.url);
+};
 
 export default api;

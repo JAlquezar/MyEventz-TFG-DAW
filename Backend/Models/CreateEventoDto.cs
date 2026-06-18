@@ -13,5 +13,7 @@ namespace MyEventz.API.Models
         public string Ubicacion { get; set; } = null!;
         public int? NumMaxParticipantes { get; set; }
         public List<int> CategoriaIds { get; set; } = new();
+        public bool EsPatrocinado { get; set; } = false;
+        public string? ImagenUrl { get; set; }
     }
 }

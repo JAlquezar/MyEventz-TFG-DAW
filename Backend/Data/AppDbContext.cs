@@ -13,6 +13,8 @@ namespace MyEventz.API.Data
         public DbSet<UsuarioHobby> UsuariosHobbies { get; set; }
         public DbSet<EventoCategoria> EventosCategorias { get; set; }
         public DbSet<ParticipanteEvento> ParticipantesEventos { get; set; }
+        public DbSet<AvisoEvento> AvisosEventos { get; set; }
+        public DbSet<SoporteTicket> SoporteTickets { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -25,6 +27,21 @@ namespace MyEventz.API.Data
             modelBuilder.Entity<UsuarioHobby>().ToTable("Usuarios_Hobbies");
             modelBuilder.Entity<EventoCategoria>().ToTable("Eventos_Categorias");
             modelBuilder.Entity<ParticipanteEvento>().ToTable("Participantes_Eventos");
+            modelBuilder.Entity<AvisoEvento>().ToTable("Avisos_Eventos");
+            modelBuilder.Entity<SoporteTicket>().ToTable("Soporte_Tickets");
+
+            // ── Relaciones ─────────────────────────────────────────────────────
+            modelBuilder.Entity<AvisoEvento>()
+                .HasOne(a => a.Evento)
+                .WithMany(e => e.Avisos)
+                .HasForeignKey(a => a.EventoId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<SoporteTicket>()
+                .HasOne(s => s.Usuario)
+                .WithMany()
+                .HasForeignKey(s => s.UsuarioId)
+                .OnDelete(DeleteBehavior.SetNull);
 
             // ── N:M Usuario - Categoria (Hobbies) ─────────────────────────────
             modelBuilder.Entity<UsuarioHobby>()

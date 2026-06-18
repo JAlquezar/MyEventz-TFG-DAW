@@ -59,7 +59,9 @@ export default function Home() {
       ) : (
         <>
           <div className="section">
-            <h2 className="section__title">🔥 Eventos populares</h2>
+            <h2 className="section__title">
+              <i className="fa-solid fa-fire animate-pulse" style={{ color: '#ef4444', marginRight: '8px' }}></i> Eventos populares
+            </h2>
             <div className="events-scroll">
               {popularEvents.map(e => (
                 <EventCard
@@ -68,7 +70,7 @@ export default function Home() {
                   title={e.titulo}
                   date={new Date(e.fechaRealizacion).toLocaleDateString('es-ES')}
                   attendees={e.participantes?.length || 0}
-                  image={`https://picsum.photos/seed/event${e.id}/500/300`}
+                  image={e.imagenUrl || `https://picsum.photos/seed/event${e.id}/500/300`}
                   compact
                 />
               ))}
@@ -77,7 +79,9 @@ export default function Home() {
 
           {recentEvents.length > 0 && (
             <div className="section">
-              <h2 className="section__title">📅 Publicaciones recientes</h2>
+              <h2 className="section__title">
+                <i className="fa-solid fa-calendar-days" style={{ color: 'var(--purple-400)', marginRight: '8px' }}></i> Publicaciones recientes
+              </h2>
               <div className="events-grid">
                 {recentEvents.map(e => (
                   <EventCard
@@ -87,7 +91,7 @@ export default function Home() {
                     date={new Date(e.fechaRealizacion).toLocaleDateString('es-ES')}
                     location={e.ubicacion}
                     attendees={e.participantes?.length || 0}
-                    image={`https://picsum.photos/seed/event${e.id}/800/400`}
+                    image={e.imagenUrl || `https://picsum.photos/seed/event${e.id}/800/400`}
                   />
                 ))}
               </div>

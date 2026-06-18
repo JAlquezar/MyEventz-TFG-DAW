@@ -15,9 +15,13 @@ namespace MyEventz.API.Models
         public int? NumMaxParticipantes { get; set; }
         public string OrganizadorId { get; set; } = null!;
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public string? CodigoAsistencia { get; set; }
+        public bool EsPatrocinado { get; set; } = false;
+        public string? ImagenUrl { get; set; }
 
         public Usuario Organizador { get; set; } = null!;
         public ICollection<EventoCategoria> Categorias { get; set; } = new List<EventoCategoria>();
         public ICollection<ParticipanteEvento> Participantes { get; set; } = new List<ParticipanteEvento>();
+        public ICollection<AvisoEvento> Avisos { get; set; } = new List<AvisoEvento>();
     }
 }

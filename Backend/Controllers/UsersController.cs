@@ -87,10 +87,12 @@ namespace MyEventz.API.Controllers
                     u.TikTok,
                     u.FotoPerfil,
                     u.CreatedAt,
+                    u.Reputacion,
+                    u.PenalizadoHasta,
                     Hobbies = u.Hobbies.Select(h => new { Categoria = new { h.Categoria.Id, h.Categoria.Nombre } }).ToList(),
                     EventosOrganizados = u.EventosOrganizados.Select(e => new
                     {
-                        e.Id, e.Titulo, e.FechaRealizacion, e.Ubicacion,
+                        e.Id, e.Titulo, e.FechaRealizacion, e.Ubicacion, e.ImagenUrl,
                         Categorias = e.Categorias.Select(c => new { Categoria = new { c.Categoria.Id, c.Categoria.Nombre } }).ToList(),
                         Participantes = e.Participantes.Select(p => new { p.UsuarioId }).ToList()
                     }).ToList(),
@@ -98,7 +100,7 @@ namespace MyEventz.API.Controllers
                     {
                         Evento = new
                         {
-                            p.Evento.Id, p.Evento.Titulo, p.Evento.FechaRealizacion, p.Evento.Ubicacion,
+                            p.Evento.Id, p.Evento.Titulo, p.Evento.FechaRealizacion, p.Evento.Ubicacion, p.Evento.ImagenUrl,
                             Categorias = p.Evento.Categorias.Select(c => new { Categoria = new { c.Categoria.Id, c.Categoria.Nombre } }).ToList(),
                             Participantes = p.Evento.Participantes.Select(ep => new { ep.UsuarioId }).ToList()
                         }
@@ -131,10 +133,12 @@ namespace MyEventz.API.Controllers
                     u.TikTok,
                     u.FotoPerfil,
                     u.CreatedAt,
+                    u.Reputacion,
+                    u.PenalizadoHasta,
                     Hobbies = u.Hobbies.Select(h => new { Categoria = new { h.Categoria.Id, h.Categoria.Nombre } }).ToList(),
                     EventosOrganizados = u.EventosOrganizados.Select(e => new
                     {
-                        e.Id, e.Titulo, e.FechaRealizacion, e.Ubicacion,
+                        e.Id, e.Titulo, e.FechaRealizacion, e.Ubicacion, e.ImagenUrl,
                         Categorias = e.Categorias.Select(c => new { Categoria = new { c.Categoria.Id, c.Categoria.Nombre } }).ToList(),
                         Participantes = e.Participantes.Select(p => new { p.UsuarioId }).ToList()
                     }).ToList(),
@@ -142,7 +146,7 @@ namespace MyEventz.API.Controllers
                     {
                         Evento = new
                         {
-                            p.Evento.Id, p.Evento.Titulo, p.Evento.FechaRealizacion, p.Evento.Ubicacion,
+                            p.Evento.Id, p.Evento.Titulo, p.Evento.FechaRealizacion, p.Evento.Ubicacion, p.Evento.ImagenUrl,
                             Categorias = p.Evento.Categorias.Select(c => new { Categoria = new { c.Categoria.Id, c.Categoria.Nombre } }).ToList(),
                             Participantes = p.Evento.Participantes.Select(ep => new { ep.UsuarioId }).ToList()
                         }
@@ -225,6 +229,36 @@ namespace MyEventz.API.Controllers
             catch (DbUpdateException ex) { return BadRequest("Error al actualizar: " + ex.InnerException?.Message ?? ex.Message); }
 
             return NoContent();
+        }
+
+        // GET /api/users/my-announcements
+        [HttpGet("my-announcements")]
+        public async Task<IActionResult> GetMyAnnouncements()
+        {
+            var firebaseUid = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(firebaseUid)) return Unauthorized();
+
+            // Find all event ids the user participates in
+            var eventIds = await _context.ParticipantesEventos
+                .Where(p => p.UsuarioId == firebaseUid)
+                .Select(p => p.EventoId)
+                .ToListAsync();
+
+            // Fetch all announcements for these events
+            var announcements = await _context.AvisosEventos
+                .Where(a => eventIds.Contains(a.EventoId))
+                .OrderByDescending(a => a.FechaPublicacion)
+                .Select(a => new
+                {
+                    a.Id,
+                    a.Titulo,
+                    a.Contenido,
+                    a.FechaPublicacion,
+                    Evento = new { a.Evento.Id, a.Evento.Titulo }
+                })
+                .ToListAsync();
+
+            return Ok(announcements);
         }
     }
 }

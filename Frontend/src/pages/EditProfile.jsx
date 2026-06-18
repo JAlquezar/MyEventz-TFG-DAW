@@ -1,10 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import { createUser, updateUser, getCategories } from '../services/api';
+import { createUser, updateUser, getCategories, uploadFile } from '../services/api';
 import { getApiErrorMessage } from '../services/errorUtils';
-import { storage } from '../firebaseConfig';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import './Pages.css';
 import './Login.css';
 
@@ -70,12 +68,10 @@ export default function EditProfile() {
     setUploadingImage(true);
     setError('');
     try {
-      const fileRef = ref(storage, `avatars/${firebaseUser.uid}`);
-      await uploadBytes(fileRef, file);
-      const url = await getDownloadURL(fileRef);
+      const url = await uploadFile(file);
       setFormData(prev => ({ ...prev, fotoPerfil: url }));
     } catch (err) {
-      setError('Error al subir la imagen. Comprueba las reglas de Firebase Storage.');
+      setError('Error al subir la imagen de perfil. Revisa la configuración del servidor y Cloudinary.');
       console.error(err);
     } finally {
       setUploadingImage(false);
@@ -176,19 +172,27 @@ export default function EditProfile() {
         <div className="section" style={{ marginTop: '32px' }}>
           <h3 className="section__title">Tus Redes Sociales</h3>
           <div className="edit-profile__social">
-            <span className="edit-profile__social-icon">🎵</span>
+            <span className="edit-profile__social-icon" style={{ fontSize: '1.2rem', color: 'var(--purple-400)', width: '24px', display: 'flex', justifyContent: 'center' }}>
+              <i className="fa-brands fa-tiktok"></i>
+            </span>
             <input className="form-input" name="tiktok" value={formData.tiktok} onChange={handleChange} placeholder="TikTok" />
           </div>
           <div className="edit-profile__social">
-            <span className="edit-profile__social-icon">📷</span>
+            <span className="edit-profile__social-icon" style={{ fontSize: '1.2rem', color: 'var(--purple-400)', width: '24px', display: 'flex', justifyContent: 'center' }}>
+              <i className="fa-brands fa-instagram"></i>
+            </span>
             <input className="form-input" name="instagram" value={formData.instagram} onChange={handleChange} placeholder="Instagram" />
           </div>
           <div className="edit-profile__social">
-            <span className="edit-profile__social-icon">🎬</span>
+            <span className="edit-profile__social-icon" style={{ fontSize: '1.2rem', color: 'var(--purple-400)', width: '24px', display: 'flex', justifyContent: 'center' }}>
+              <i className="fa-brands fa-youtube"></i>
+            </span>
             <input className="form-input" name="youtube" value={formData.youtube} onChange={handleChange} placeholder="YouTube" />
           </div>
           <div className="edit-profile__social">
-            <span className="edit-profile__social-icon">𝕏</span>
+            <span className="edit-profile__social-icon" style={{ fontSize: '1.2rem', color: 'var(--purple-400)', width: '24px', display: 'flex', justifyContent: 'center' }}>
+              <i className="fa-brands fa-x-twitter"></i>
+            </span>
             <input className="form-input" name="x" value={formData.x} onChange={handleChange} placeholder="X (Twitter)" />
           </div>
         </div>

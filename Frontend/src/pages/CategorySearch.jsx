@@ -103,7 +103,15 @@ export default function CategorySearch() {
           ) : displayEvents.length > 0 && (
             <div className="section" style={{ marginTop: '16px' }}>
               <h2 className="section__title">
-                {searchQuery.trim() ? '🔍 Resultados' : '📅 Todos los eventos'}
+                {searchQuery.trim() ? (
+                  <>
+                    <i className="fa-solid fa-magnifying-glass" style={{ color: 'var(--purple-400)', marginRight: '8px' }}></i> Resultados
+                  </>
+                ) : (
+                  <>
+                    <i className="fa-solid fa-calendar-days" style={{ color: 'var(--purple-400)', marginRight: '8px' }}></i> Todos los eventos
+                  </>
+                )}
               </h2>
               <div className="events-grid">
                 {displayEvents.map(e => (
@@ -112,7 +120,7 @@ export default function CategorySearch() {
                     date={new Date(e.fechaRealizacion).toLocaleDateString('es-ES')}
                     location={e.ubicacion}
                     attendees={e.participantes?.length || 0}
-                    image={`https://picsum.photos/seed/event${e.id}/800/400`}
+                    image={e.imagenUrl || `https://picsum.photos/seed/event${e.id}/800/400`}
                   />
                 ))}
               </div>
@@ -147,7 +155,7 @@ export default function CategorySearch() {
                     date={new Date(e.fechaRealizacion).toLocaleDateString('es-ES')}
                     location={e.ubicacion}
                     attendees={e.participantes?.length || 0}
-                    image={`https://picsum.photos/seed/event${e.id}/800/400`}
+                    image={e.imagenUrl || `https://picsum.photos/seed/event${e.id}/800/400`}
                   />
                 ))}
               </div>

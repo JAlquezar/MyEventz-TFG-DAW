@@ -1,11 +1,16 @@
 import { Link } from 'react-router-dom';
 
-export default function EventCard({ id, image, title, date, location, attendees, compact = false }) {
+export default function EventCard({ id, image, title, date, location, attendees, compact = false, sponsored = false }) {
   return (
-    <Link to={`/event/${id}`} className={`event-card ${compact ? 'event-card--compact' : ''}`}>
+    <Link to={`/event/${id}`} className={`event-card ${compact ? 'event-card--compact' : ''} ${sponsored ? 'event-card--sponsored' : ''}`}>
       <div className="event-card__image">
         <img src={image} alt={title} />
         <span className="event-card__attendees">{attendees}</span>
+        {sponsored && (
+          <span className="event-card__sponsored-badge">
+            <i className="fa-solid fa-star" style={{ marginRight: '4px' }}></i> Patrocinado
+          </span>
+        )}
       </div>
       <div className="event-card__body">
         <h3 className="event-card__title">{title}</h3>

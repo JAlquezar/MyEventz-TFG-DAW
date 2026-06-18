@@ -14,7 +14,9 @@ CREATE TABLE IF NOT EXISTS Usuarios (
     YouTube VARCHAR(255),
     TikTok VARCHAR(255),
     FotoPerfil VARCHAR(1024),
-    CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    Reputacion INT DEFAULT 100,
+    PenalizadoHasta DATETIME
 );
 
 CREATE TABLE IF NOT EXISTS Categorias (
@@ -33,6 +35,9 @@ CREATE TABLE IF NOT EXISTS Eventos (
     NumMaxParticipantes INT,
     OrganizadorId VARCHAR(255) NOT NULL,
     CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CodigoAsistencia VARCHAR(10),
+    EsPatrocinado BOOLEAN DEFAULT FALSE,
+    ImagenUrl VARCHAR(1024),
     FOREIGN KEY (OrganizadorId) REFERENCES Usuarios(Id) ON DELETE CASCADE
 );
 
@@ -56,9 +61,31 @@ CREATE TABLE IF NOT EXISTS Participantes_Eventos (
     UsuarioId VARCHAR(255) NOT NULL,
     EventoId INT NOT NULL,
     FechaInscripcion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    Asistio BOOLEAN,
     PRIMARY KEY (UsuarioId, EventoId),
     FOREIGN KEY (UsuarioId) REFERENCES Usuarios(Id) ON DELETE CASCADE,
     FOREIGN KEY (EventoId) REFERENCES Eventos(Id) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS Avisos_Eventos (
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    EventoId INT NOT NULL,
+    Titulo VARCHAR(255) NOT NULL,
+    Contenido TEXT NOT NULL,
+    FechaPublicacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (EventoId) REFERENCES Eventos(Id) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS Soporte_Tickets (
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    UsuarioId VARCHAR(255) NULL,
+    Email VARCHAR(255) NOT NULL,
+    Nombre VARCHAR(255) NOT NULL,
+    Categoria VARCHAR(100) NOT NULL,
+    Asunto VARCHAR(255) NOT NULL,
+    Mensaje TEXT NOT NULL,
+    FechaCreado TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (UsuarioId) REFERENCES Usuarios(Id) ON DELETE SET NULL
 );
 
 -- ===================================================================

@@ -1,0 +1,20 @@
+services:
+  backend:
+    image: gigantosaurio/myeventz-backend:latest
+    container_name: myeventz_backend
+    ports:
+      - "5000:8080"
+    environment:
+      - ConnectionStrings__DefaultConnection=Server=${DB_HOST};Database=${DB_NAME};User=${DB_USER};Password=${DB_PASSWORD};CharSet=utf8mb4;
+      - Firebase__ProjectId=${FIREBASE_PROJECT_ID:-myeventzaragoza}
+      - ASPNETCORE_ENVIRONMENT=Production
+    restart: always
+
+  frontend:
+    image: gigantosaurio/myeventz-frontend:latest
+    container_name: myeventz_frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: always

@@ -11,5 +11,6 @@ namespace MyEventz.API.Models
         public Evento Evento { get; set; } = null!;
 
         public DateTime FechaInscripcion { get; set; } = DateTime.UtcNow;
+        public bool? Asistio { get; set; }
     }
 }

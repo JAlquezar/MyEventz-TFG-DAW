@@ -61,15 +61,42 @@ export default function Profile() {
   const myEvents = profileUser.eventosOrganizados || [];
   const participations = profileUser.eventosParticipados?.map(p => p.evento).filter(Boolean) || [];
 
+  const isPenalized = isMyProfile && profileUser.penalizadoHasta && new Date(profileUser.penalizadoHasta) > new Date();
+
+  let repClass = 'reputation-badge--high';
+  if (profileUser.reputacion < 50) repClass = 'reputation-badge--low';
+  else if (profileUser.reputacion < 80) repClass = 'reputation-badge--medium';
+
   return (
     <div className="page-wrapper">
+      
+      {/* Penalty Alert Banner */}
+      {isPenalized && (
+        <div className="penalty-alert">
+          <span style={{ fontSize: '1.2rem', color: '#ef4444', display: 'flex', alignItems: 'center' }}>
+            <i className="fa-solid fa-triangle-exclamation"></i>
+          </span>
+          <div>
+            <div style={{ fontWeight: 700 }}>Penalización Temporal por Inasistencia</div>
+            <div style={{ fontSize: '0.85rem', marginTop: '4px' }}>
+              No puedes inscribirte a nuevos eventos hasta el <b>{new Date(profileUser.penalizadoHasta).toLocaleString('es-ES', { dateStyle: 'long', timeStyle: 'short' })}</b>.
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="profile-header">
         <img src={profileUser.fotoPerfil || (isMyProfile ? firebaseUser?.photoURL : null) || `https://i.pravatar.cc/150?u=${profileUser.id}`} alt={profileUser.nombreCompleto} className="profile-header__avatar" />
         <div className="profile-header__info">
           <h1 className="profile-header__name">{profileUser.nombreCompleto}</h1>
-          <p className="profile-header__handle">@{profileUser.username}</p>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap', marginTop: '4px' }}>
+            <span style={{ color: 'var(--text-secondary)' }}>@{profileUser.username}</span>
+            <span className={`reputation-badge ${repClass}`} style={{ padding: '2px 8px', fontSize: '0.75rem', display: 'flex', alignItems: 'center', gap: '4px' }}>
+              <i className="fa-solid fa-star" style={{ color: '#f59e0b' }}></i> {profileUser.reputacion}% Rep
+            </span>
+          </div>
           {isMyProfile && (
-            <div className="profile-header__actions">
+            <div className="profile-header__actions" style={{ marginTop: '16px' }}>
               <Link to="/edit-profile" className="btn btn--outline btn--sm">
                 <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7" /><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z" /></svg>
                 Editar perfil
@@ -101,7 +128,7 @@ export default function Profile() {
               <EventCard key={e.id} id={e.id} title={e.titulo}
                 date={new Date(e.fechaRealizacion).toLocaleDateString('es-ES')}
                 attendees={e.participantes?.length || 0}
-                image={`https://picsum.photos/seed/event${e.id}/500/300`} compact />
+                image={e.imagenUrl || `https://picsum.photos/seed/event${e.id}/500/300`} compact />
             ))}
           </div>
         </div>
@@ -115,7 +142,7 @@ export default function Profile() {
               <EventCard key={e.id} id={e.id} title={e.titulo}
                 date={new Date(e.fechaRealizacion).toLocaleDateString('es-ES')}
                 attendees={e.participantes?.length || 0}
-                image={`https://picsum.photos/seed/event${e.id}/500/300`} compact />
+                image={e.imagenUrl || `https://picsum.photos/seed/event${e.id}/500/300`} compact />
             ))}
           </div>
         </div>

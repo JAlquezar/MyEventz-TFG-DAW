@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import { createUser, updateUser, getCategories } from '../services/api';
+import { createUser, updateUser, getCategories, uploadFile } from '../services/api';
 import { getApiErrorMessage } from '../services/errorUtils';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth, storage } from '../firebaseConfig';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { auth } from '../firebaseConfig';
 import './Login.css';
 
 export default function Register() {
@@ -47,12 +46,10 @@ export default function Register() {
     setUploadingImage(true);
     setError('');
     try {
-      const fileRef = ref(storage, `avatars/${firebaseUser.uid}`);
-      await uploadBytes(fileRef, file);
-      const url = await getDownloadURL(fileRef);
+      const url = await uploadFile(file);
       setFormData(prev => ({ ...prev, fotoPerfil: url }));
     } catch (err) {
-      setError('Error al subir la imagen. Comprueba las reglas de Firebase Storage.');
+      setError('Error al subir la imagen de perfil. Revisa la configuración del servidor y Cloudinary.');
       console.error(err);
     } finally {
       setUploadingImage(false);

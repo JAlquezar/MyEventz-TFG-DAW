@@ -17,6 +17,8 @@ namespace MyEventz.API.Models
         public string? TikTok { get; set; }
         public string? FotoPerfil { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public int Reputacion { get; set; } = 100;
+        public DateTime? PenalizadoHasta { get; set; }
 
         public ICollection<Evento> EventosOrganizados { get; set; } = new List<Evento>();
         public ICollection<UsuarioHobby> Hobbies { get; set; } = new List<UsuarioHobby>();
